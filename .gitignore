@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+._*
+
+# Editor / OS junk
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Logs / env (none used yet, but safe to have)
+*.log
+.env
