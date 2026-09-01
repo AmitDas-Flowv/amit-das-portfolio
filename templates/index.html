@@ -1,0 +1,194 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- ============ HERO ============ -->
+<section class="hero wrap" id="top">
+  <div class="eyebrow reveal">
+    <span class="dot"></span>
+    <span>{{ SITE.current }}</span>
+    <span>／</span>
+    <span>{{ SITE.location }}</span>
+  </div>
+  <h1 class="reveal">{{ SITE.first }}<br><span class="it">{{ SITE.last }}</span></h1>
+  <p class="role reveal">{{ SITE.role }}</p>
+  <p class="sub reveal">{{ SITE.hero_sub | safe }}</p>
+
+  <div class="stats reveal">
+    {% for s in STATS %}
+    <div class="stat"><div class="k"><em>{{ s.value }}</em>{{ s.suffix }}</div><div class="v">{{ s.label }}</div></div>
+    {% endfor %}
+  </div>
+
+  <div class="scrollcue"><span class="bar"></span><span>Scroll — Reel begins</span></div>
+</section>
+
+<!-- ============ INTRO ============ -->
+<section class="section-block wrap" id="story">
+  <div class="cue reveal"><span class="n">00:01</span> — Introduction</div>
+  <div class="intro-grid">
+    <div class="reveal">
+      <h2 class="section-head">{{ INTRO.head | safe }}</h2>
+      <p class="lede">{{ INTRO.lede }}</p>
+    </div>
+    <div class="intro-body reveal">
+      {% for p in INTRO.body %}<p>{{ p | safe }}</p>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ============ AI WORK ============ -->
+<section class="section-block wrap" id="work">
+  <div class="cue reveal"><span class="n">00:02</span> — Current Chapter · Published AI Films</div>
+  <h2 class="section-head reveal" style="max-width:16ch">The AI Director’s reel.</h2>
+  <p class="lede reveal" style="margin-bottom:clamp(40px,6vh,64px)">Four public releases for T-Series’ Project Fly — each owned start to finish: AI generation, direction and edit.</p>
+
+  <div class="grid-work">
+    {% for film in AI_FILMS %}
+    <a class="card reveal{% if film.feature %} feature{% endif %}" href="{{ film.href }}" target="_blank" rel="noopener">
+      <span class="frameno">{{ film.frameno }}</span>
+      <span class="tag">{{ film.tag }}</span>
+      <h3>{{ film.title | safe }}</h3>
+      <p class="meta">{{ film.meta | safe }}</p>
+      <span class="go"><span class="role">{{ film.cta }}</span><span class="arw">→</span></span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ============ CINEMA WORK ============ -->
+<section class="section-block tight wrap">
+  <div class="cue reveal"><span class="n">00:03</span> — Selected Cinematography &amp; Direction</div>
+  <h2 class="section-head reveal" style="max-width:18ch">Before the models, the lens.</h2>
+
+  <div class="grid-work reveal" style="margin-top:clamp(30px,5vh,52px)">
+    {% for w in CINEMA_WORK %}
+    <a class="card" href="{{ w.href }}" target="_blank" rel="noopener">
+      <span class="role">{{ w.role }}</span>
+      <h3>{{ w.title | safe }}</h3>
+      <p class="meta">{{ w.meta | safe }}</p>
+      <span class="go"><span class="role">Watch</span><span class="arw">→</span></span>
+    </a>
+    {% endfor %}
+  </div>
+
+  <!-- signature credits without a single public link -->
+  <div class="sig reveal">
+    {% for c in SIGNATURE %}
+    <div class="row">
+      <div class="tag">{{ c.tag }}</div>
+      <h4>{{ c.title }}</h4>
+      <p>{{ c.body | safe }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section class="section-block wrap">
+  <div class="cue reveal"><span class="n">00:04</span> — The Long Cut · Career</div>
+  <div class="tl">
+    {% for t in TIMELINE %}
+    <div class="item{% if t.now %} now{% endif %} reveal"><div class="yr">{{ t.year }}</div><div class="body"><h4>{{ t.title }} <span>{{ t.org }}</span></h4><p>{{ t.body | safe }}</p></div></div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ============ CRAFT ============ -->
+<section class="section-block wrap" id="craft">
+  <div class="cue reveal"><span class="n">00:05</span> — The Toolkit · Craft</div>
+  <h2 class="section-head reveal" style="max-width:18ch; margin-bottom:clamp(40px,6vh,64px)">Direction, from silver halide to latent space.</h2>
+  <div class="cap-grid">
+    {% for cap in CAPABILITIES %}
+    <div class="cap reveal">
+      <h4>{{ cap.title }}</h4>
+      <ul>
+        {% for li in cap.entries %}<li>{{ li }}</li>{% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<section class="marquee reveal" aria-label="Selected clients and collaborators">
+  <div class="track" id="track">
+    {% set run %}{% for c in CLIENTS %}<i>·</i>{{ c }}{% endfor %}<i>·</i>{% endset %}
+    <span>{{ run | safe }}</span>
+    <span aria-hidden="true">{{ run | safe }}</span>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact wrap" id="contact">
+  <div class="cue reveal" style="justify-content:center"><span class="n">00:06</span> — {{ CONTACT.cue }}</div>
+  <p class="big reveal">{{ CONTACT.big }}</p>
+
+  <form class="contact-form reveal" id="contact-form" novalidate>
+    <div class="field-row">
+      <div>
+        <label for="cf-name">Name</label>
+        <input type="text" id="cf-name" name="name" autocomplete="name" placeholder="Your name" required />
+      </div>
+      <div>
+        <label for="cf-email">Email</label>
+        <input type="email" id="cf-email" name="email" autocomplete="email" placeholder="you@studio.com" required />
+      </div>
+    </div>
+    <div>
+      <label for="cf-message">Message</label>
+      <textarea id="cf-message" name="message" placeholder="Tell me about the project…" required></textarea>
+    </div>
+    <!-- honeypot: bots fill this, humans never see it -->
+    <div class="hp" aria-hidden="true">
+      <label for="cf-company">Company</label>
+      <input type="text" id="cf-company" name="company" tabindex="-1" autocomplete="off" />
+    </div>
+    <button type="submit" id="cf-submit"><span>Send message</span><span class="arw">→</span></button>
+    <p class="form-status" id="cf-status" role="status" aria-live="polite"></p>
+  </form>
+
+  <div class="reveal" style="margin-top:clamp(28px,4vh,40px)">
+    <a class="mailto" href="mailto:{{ SITE.email }}">{{ SITE.email }}</a>
+  </div>
+  <div class="socials reveal">
+    {% for s in SOCIALS %}<a href="{{ s.href }}" target="_blank" rel="noopener">{{ s.label }}</a>{% endfor %}
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  (function(){
+    var form = document.getElementById('contact-form');
+    if(!form) return;
+    var statusEl = document.getElementById('cf-status');
+    var btn = document.getElementById('cf-submit');
+
+    form.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      statusEl.className = 'form-status';
+      statusEl.textContent = 'Sending…';
+      btn.disabled = true;
+
+      var data = new FormData(form);
+      fetch('{{ url_for("contact") }}', { method:'POST', body:data, headers:{ 'X-Requested-With':'fetch' } })
+        .then(function(r){ return r.json().then(function(j){ return { ok:r.ok, body:j }; }); })
+        .then(function(res){
+          if(res.ok && res.body.ok){
+            form.reset();
+            statusEl.className = 'form-status ok';
+            statusEl.textContent = res.body.message || 'Thank you — your message is on its way.';
+          } else {
+            statusEl.className = 'form-status err';
+            statusEl.textContent = (res.body && res.body.error) || 'Something went wrong. Please try the email link above.';
+          }
+        })
+        .catch(function(){
+          statusEl.className = 'form-status err';
+          statusEl.textContent = 'Network error. Please try the email link above.';
+        })
+        .finally(function(){ btn.disabled = false; });
+    });
+  })();
+</script>
+{% endblock %}

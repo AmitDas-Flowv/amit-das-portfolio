@@ -8,6 +8,16 @@ Thumbs.db
 .idea/
 .vscode/
 
-# Logs / env (none used yet, but safe to have)
+# Logs / env
 *.log
+contact_submissions.log
 .env
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node / Tailwind toolchain
+node_modules/

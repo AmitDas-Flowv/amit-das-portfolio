@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{% block title %}{{ SITE.name }}{% endblock %}</title>
+<meta name="description" content="{{ SITE.meta_description }}" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&family=Hanken+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/tailwind.css') }}" />
+</head>
+<body class="bg-ink text-paper font-body font-normal text-step-0 leading-[1.65] overflow-x-hidden">
+
+<div class="grain"></div>
+<div class="glow"></div>
+<div class="vignette"></div>
+
+<header class="site-nav" id="nav">
+  <div class="mark">AMIT <b>DAS</b></div>
+  <nav>
+    {% for item in NAV %}<a href="{{ item.href }}">{{ item.label }}</a>{% endfor %}
+  </nav>
+</header>
+
+{% block content %}{% endblock %}
+
+<footer class="site-footer">
+  <span>{{ SITE.copyright }}</span>
+  <span>{{ SITE.footer_role }}</span>
+  <span>Fin.</span>
+</footer>
+
+<script>
+  // sticky nav state
+  var nav = document.getElementById('nav');
+  var onScroll = function(){ nav.classList.toggle('solid', window.scrollY > 40); };
+  onScroll(); window.addEventListener('scroll', onScroll, { passive:true });
+
+  // scroll reveals
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:0.12, rootMargin:'0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(function(el, i){
+    // gentle stagger for hero children
+    if(el.closest('.hero')) el.style.transitionDelay = (i*0.09)+'s';
+    io.observe(el);
+  });
+</script>
+{% block scripts %}{% endblock %}
+</body>
+</html>
