@@ -23,7 +23,7 @@ from email.message import EmailMessage
 from pathlib import Path
 
 from dotenv import load_dotenv
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, abort, jsonify, render_template, request
 
 import content
 
@@ -44,6 +44,15 @@ logger = logging.getLogger("portfolio")
 @app.route("/")
 def index():
     return render_template("index.html", **content.as_context())
+
+
+@app.route("/work/<slug>")
+def work_section(slug):
+    """A focused, shareable page for one vertical — e.g. /work/fashion."""
+    group = content.group_for(slug)
+    if group is None:
+        abort(404)
+    return render_template("section.html", group=group, **content.as_context())
 
 
 @app.route("/contact", methods=["POST"])

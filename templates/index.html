@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from "_card.html" import work_grid %}
 
 {% block content %}
 <!-- ============ HERO ============ -->
@@ -47,34 +48,11 @@
   </div>
 </section>
 
-<!-- ============ WORK — the inner content of a card ============ -->
-{% macro card_inner(w) %}
-  <div class="card-media">
-    {% if w.thumb_src %}
-    <img class="card-thumb"
-         src="{% if w.thumb_external %}{{ w.thumb_src }}{% else %}{{ url_for('static', filename=w.thumb_src) }}{% endif %}"
-         alt="{{ w.title }}" loading="lazy"
-         {% if w.yt_id %}data-yt="{{ w.yt_id }}"{% endif %}
-         onerror="thumbFallback(this)">
-    {% endif %}
-  </div>
-  <div class="card-body">
-    <div class="card-head">
-      <span class="role">{{ w.role }}</span>
-      {% if w.year %}<span class="frameno">{{ w.year }}</span>{% endif %}
-    </div>
-    <h3>{{ w.title | safe }}</h3>
-    {% if w.client %}<p class="card-client">{{ w.client }}</p>{% endif %}
-    <p class="meta">{{ w.meta | safe }}</p>
-    {% if w.cta %}<span class="go">{{ w.cta }}<span class="arw">→</span></span>{% endif %}
-  </div>
-{% endmacro %}
-
 <!-- ============ WORK — intro + filter bar ============ -->
 <section class="section-block wrap" id="work">
   <div class="cue reveal"><span class="n">00:02</span> — Selected Work · By Discipline</div>
   <h2 class="section-head reveal" style="max-width:18ch">One body of work, many rooms.</h2>
-  <p class="lede reveal" style="margin-bottom:clamp(28px,4vh,44px)">From end-to-end AI films to luxury fashion, music, brand campaigns, travel, food and live direction — filter to the work that fits the brief.</p>
+  <p class="lede reveal" style="margin-bottom:clamp(28px,4vh,44px)">From end-to-end AI films to luxury fashion, music, brand campaigns, travel, food and live direction — filter to the work that fits the brief, or open any discipline as its own shareable page.</p>
 
   <div class="filter-bar reveal" id="filter-bar" role="tablist" aria-label="Filter work by discipline">
     <button class="chip active" data-filter="all" type="button">All</button>
@@ -88,18 +66,18 @@
 {% for group in WORK_GROUPS %}
 <section class="section-block tight wrap work-cat" data-category="{{ group.slug }}" id="cat-{{ group.slug }}">
   <div class="cue reveal"><span class="n">{{ '%02d'|format(loop.index) }}</span> — {{ group.label }}</div>
-  <h2 class="section-head reveal" style="max-width:22ch">{{ group.label }}</h2>
-  <p class="lede reveal" style="margin-bottom:clamp(30px,5vh,50px); max-width:46ch">{{ group.blurb }}</p>
-
-  <div class="grid-work">
-    {% for w in group.pieces %}
-    {% if w.href %}
-    <a class="card work-card reveal" data-tags="{{ w.tagstr }}" href="{{ w.href }}" target="_blank" rel="noopener">{{ card_inner(w) }}</a>
-    {% else %}
-    <div class="card work-card reveal" data-tags="{{ w.tagstr }}">{{ card_inner(w) }}</div>
-    {% endif %}
-    {% endfor %}
+  <div class="cat-head reveal">
+    <h2 class="section-head" style="max-width:22ch; margin-bottom:0">{{ group.label }}</h2>
+    <div class="cat-actions">
+      <a class="share-btn ghost" href="{{ url_for('work_section', slug=group.slug) }}">Open as page →</a>
+      <button class="share-btn" type="button" data-path="{{ url_for('work_section', slug=group.slug) }}" onclick="copyShareLink(this)" aria-label="Copy a shareable link to this section">
+        <span class="share-ico" aria-hidden="true">↗</span><span class="share-label">Share</span>
+      </button>
+    </div>
   </div>
+  <p class="lede reveal" style="margin:14px 0 clamp(30px,5vh,50px); max-width:46ch">{{ group.blurb }}</p>
+
+  {{ work_grid(group.pieces) }}
 </section>
 {% endfor %}
 
@@ -138,118 +116,5 @@
   </div>
 </section>
 
-<!-- ============ CONTACT ============ -->
-<section class="contact wrap" id="contact">
-  <div class="cue reveal" style="justify-content:center"><span class="n">00:06</span> — {{ CONTACT.cue }}</div>
-  <p class="big reveal">{{ CONTACT.big }}</p>
-
-  <form class="contact-form reveal" id="contact-form" novalidate>
-    <div class="field-row">
-      <div>
-        <label for="cf-name">Name</label>
-        <input type="text" id="cf-name" name="name" autocomplete="name" placeholder="Your name" required />
-      </div>
-      <div>
-        <label for="cf-email">Email</label>
-        <input type="email" id="cf-email" name="email" autocomplete="email" placeholder="you@studio.com" required />
-      </div>
-    </div>
-    <div>
-      <label for="cf-message">Message</label>
-      <textarea id="cf-message" name="message" placeholder="Tell me about the project…" required></textarea>
-    </div>
-    <!-- honeypot: bots fill this, humans never see it -->
-    <div class="hp" aria-hidden="true">
-      <label for="cf-company">Company</label>
-      <input type="text" id="cf-company" name="company" tabindex="-1" autocomplete="off" />
-    </div>
-    <button type="submit" id="cf-submit"><span>Send message</span><span class="arw">→</span></button>
-    <p class="form-status" id="cf-status" role="status" aria-live="polite"></p>
-  </form>
-
-  <div class="reveal" style="margin-top:clamp(28px,4vh,40px)">
-    <a class="mailto" href="mailto:{{ SITE.email }}">{{ SITE.email }}</a>
-  </div>
-  <div class="socials reveal">
-    {% for s in SOCIALS %}<a href="{{ s.href }}" target="_blank" rel="noopener">{{ s.label }}</a>{% endfor %}
-  </div>
-</section>
-{% endblock %}
-
-{% block scripts %}
-<script>
-  (function(){
-    var form = document.getElementById('contact-form');
-    if(!form) return;
-    var statusEl = document.getElementById('cf-status');
-    var btn = document.getElementById('cf-submit');
-
-    form.addEventListener('submit', function(ev){
-      ev.preventDefault();
-      statusEl.className = 'form-status';
-      statusEl.textContent = 'Sending…';
-      btn.disabled = true;
-
-      var data = new FormData(form);
-      fetch('{{ url_for("contact") }}', { method:'POST', body:data, headers:{ 'X-Requested-With':'fetch' } })
-        .then(function(r){ return r.json().then(function(j){ return { ok:r.ok, body:j }; }); })
-        .then(function(res){
-          if(res.ok && res.body.ok){
-            form.reset();
-            statusEl.className = 'form-status ok';
-            statusEl.textContent = res.body.message || 'Thank you — your message is on its way.';
-          } else {
-            statusEl.className = 'form-status err';
-            statusEl.textContent = (res.body && res.body.error) || 'Something went wrong. Please try the email link above.';
-          }
-        })
-        .catch(function(){
-          statusEl.className = 'form-status err';
-          statusEl.textContent = 'Network error. Please try the email link above.';
-        })
-        .finally(function(){ btn.disabled = false; });
-    });
-  })();
-
-  // ---- Work filter bar + shareable deep-links (#fashion or ?focus=ai) ----
-  (function(){
-    var bar = document.getElementById('filter-bar');
-    if(!bar) return;
-    var chips = [].slice.call(bar.querySelectorAll('.chip'));
-    var cards = [].slice.call(document.querySelectorAll('.work-card'));
-    var cats  = [].slice.call(document.querySelectorAll('.work-cat'));
-    var valid = chips.map(function(c){ return c.dataset.filter; });
-
-    function apply(filter){
-      if(valid.indexOf(filter) < 0) filter = 'all';
-      chips.forEach(function(c){ c.classList.toggle('active', c.dataset.filter === filter); });
-      cards.forEach(function(card){
-        var show = filter === 'all' ||
-          (' ' + (card.dataset.tags || '') + ' ').indexOf(' ' + filter + ' ') > -1;
-        card.classList.toggle('is-hidden', !show);
-      });
-      cats.forEach(function(sec){
-        sec.classList.toggle('is-hidden', !sec.querySelector('.work-card:not(.is-hidden)'));
-      });
-    }
-
-    function fromUrl(){
-      var hash = (location.hash || '').replace('#', '');
-      var focus = new URLSearchParams(location.search).get('focus');
-      apply(focus || hash || 'all');
-    }
-
-    chips.forEach(function(c){
-      c.addEventListener('click', function(){
-        var f = c.dataset.filter;
-        apply(f);
-        if(history.replaceState){
-          history.replaceState(null, '', f === 'all' ? location.pathname : '#' + f);
-        }
-      });
-    });
-    window.addEventListener('hashchange', fromUrl);
-    fromUrl();
-  })();
-</script>
+{% include "_contact.html" %}
 {% endblock %}

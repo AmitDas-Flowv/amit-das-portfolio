@@ -38,9 +38,9 @@ SITE = {
 # --- Top navigation -------------------------------------------------------
 
 NAV = [
-    {"label": "Work", "href": "#work"},
-    {"label": "Story", "href": "#story"},
-    {"label": "Craft", "href": "#craft"},
+    {"label": "Work", "href": "/#work"},
+    {"label": "Story", "href": "/#story"},
+    {"label": "Craft", "href": "/#craft"},
     {"label": "Contact", "href": "#contact"},
 ]
 
@@ -584,6 +584,16 @@ def work_by_category():
         if items:
             groups.append({**cat, "pieces": items})
     return groups, decorated
+
+
+def group_for(slug):
+    """Return one decorated CATEGORY group (with its 1-based ``index`` among the
+    non-empty groups) for the /work/<slug> page, or None if unknown/empty."""
+    groups, _ = work_by_category()
+    for i, g in enumerate(groups, start=1):
+        if g["slug"] == slug:
+            return {**g, "index": i}
+    return None
 
 
 def montage_frames(decorated):

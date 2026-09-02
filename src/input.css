@@ -410,6 +410,67 @@
     transform: translateX(6px);
   }
 
+  /* ---------- section header row + share button ---------- */
+  .cat-head {
+    @apply flex items-end justify-between flex-wrap;
+    gap: 16px;
+  }
+  .cat-actions {
+    @apply flex items-center flex-wrap;
+    gap: 10px;
+  }
+  .share-btn {
+    @apply inline-flex items-center font-mono text-step--1 uppercase text-paper-dim cursor-pointer no-underline;
+    gap: 8px;
+    letter-spacing: 0.12em;
+    padding: 9px 15px;
+    background: transparent;
+    border: 1px solid theme("colors.hair.soft");
+    transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+  }
+  .share-btn:hover {
+    @apply text-gold-lift;
+    border-color: theme("colors.hair.DEFAULT");
+  }
+  .share-btn.ghost {
+    @apply text-paper-faint;
+    border-color: transparent;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+  .share-btn.ghost:hover {
+    @apply text-gold-lift;
+  }
+  .share-btn .share-ico {
+    @apply text-gold;
+    font-size: 1.05em;
+  }
+  .share-btn.copied {
+    @apply text-ink;
+    background: theme("colors.gold.DEFAULT");
+    border-color: theme("colors.gold.DEFAULT");
+  }
+  .share-btn.copied .share-ico {
+    @apply text-ink;
+  }
+
+  /* ---------- dedicated section page hero ---------- */
+  .section-hero {
+    padding: clamp(130px, 20vh, 220px) 0 clamp(20px, 4vh, 48px);
+  }
+  .section-hero-title {
+    @apply font-display font-medium text-paper text-step-4;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .section-byline {
+    @apply font-mono text-step--1 uppercase text-paper-faint;
+    letter-spacing: 0.18em;
+    margin: clamp(20px, 3vh, 30px) 0 0;
+  }
+
   /* ---------- filter bar ---------- */
   .filter-bar {
     @apply flex flex-wrap;

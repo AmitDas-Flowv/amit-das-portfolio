@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% from "_card.html" import work_grid %}
+
+{% block title %}{{ SITE.name }} — {{ group.label }}{% endblock %}
+{% block description %}{{ SITE.name }} · {{ SITE.role }} — {{ group.blurb }}{% endblock %}
+
+{% block content %}
+<!-- ============ SECTION HERO ============ -->
+<section class="section-hero wrap" id="top">
+  <div class="cue reveal"><span class="n">{{ '%02d'|format(group.index) }}</span> — Selected Work</div>
+  <h1 class="section-hero-title reveal">{{ group.label }}</h1>
+  <p class="lede reveal" style="margin:18px 0 0; max-width:48ch">{{ group.blurb }}</p>
+  <p class="section-byline reveal">{{ SITE.name }} — {{ SITE.role }}</p>
+
+  <div class="cat-actions reveal" style="margin-top:clamp(24px,3.5vh,36px)">
+    <a class="share-btn ghost" href="{{ url_for('index') }}#work">← Full portfolio</a>
+    <button class="share-btn" type="button" data-path="{{ url_for('work_section', slug=group.slug) }}" onclick="copyShareLink(this)" aria-label="Copy a shareable link to this page">
+      <span class="share-ico" aria-hidden="true">↗</span><span class="share-label">Share this page</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ THE WORK ============ -->
+<section class="section-block tight wrap">
+  {{ work_grid(group.pieces) }}
+</section>
+
+{% include "_contact.html" %}
+{% endblock %}
