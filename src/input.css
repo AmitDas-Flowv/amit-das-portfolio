@@ -299,74 +299,107 @@
     }
   }
 
+  /* ---------- work cards: still on top, text below ---------- */
   .card {
-    @apply relative flex flex-col justify-end overflow-hidden bg-ink-3;
-    min-height: 300px;
-    padding: 26px;
+    @apply relative flex flex-col overflow-hidden bg-ink-3;
+    height: 100%;
     border: 1px solid theme("colors.hair.soft");
     transition: border-color 0.5s ease,
       transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
-    isolation: isolate;
   }
-  .card::before {
-    /* generated "still" — gradient graded like film */
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -2;
+  .card:hover {
+    border-color: theme("colors.hair.DEFAULT");
+    transform: translateY(-4px);
+  }
+
+  /* the 16:9 still block */
+  .card-media {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-bottom: 1px solid theme("colors.hair.soft");
+    /* graded film-still fallback shown when there is no thumbnail image */
     background: radial-gradient(
         80% 120% at 20% 0%,
-        rgba(201, 161, 90, 0.22),
+        rgba(201, 161, 90, 0.2),
         transparent 55%
       ),
-      linear-gradient(200deg, theme("colors.ink.3"), theme("colors.ink.DEFAULT") 70%);
-    transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.6s ease;
+      linear-gradient(200deg, theme("colors.ink.3"), theme("colors.ink.DEFAULT") 72%);
   }
-  .card::after {
-    /* scanline / grain veil */
+  .card-media::after {
+    /* faint scanline veil over the still */
     content: "";
     position: absolute;
     inset: 0;
-    z-index: -1;
-    opacity: 0.5;
+    opacity: 0.4;
+    pointer-events: none;
     background: repeating-linear-gradient(
       0deg,
       rgba(255, 255, 255, 0.02) 0 1px,
       transparent 1px 3px
     );
   }
-  .card:hover {
-    border-color: theme("colors.hair.DEFAULT");
-    transform: translateY(-4px);
+  .card-thumb {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(1.02) contrast(1.02);
+    transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.6s ease;
   }
-  .card:hover::before {
-    transform: scale(1.06);
-    filter: saturate(1.15) brightness(1.08);
+  .card-thumb.thumb-failed {
+    display: none;
   }
-  .card .tag {
-    @apply font-mono text-step--1 uppercase text-gold;
-    letter-spacing: 0.16em;
-    margin-bottom: auto;
+  .card:hover .card-thumb {
+    transform: scale(1.05);
+    filter: saturate(1.12) brightness(1.05);
+  }
+
+  /* the padded text block below the still */
+  .card-body {
+    @apply flex flex-col;
+    flex: 1 1 auto;
+    padding: clamp(18px, 1.6vw, 24px);
+  }
+  .card-head {
+    @apply flex items-baseline justify-between;
+    gap: 12px;
+    margin-bottom: 14px;
   }
   .card .role {
-    @apply font-mono text-step--1 uppercase text-paper-faint;
-    letter-spacing: 0.12em;
+    @apply font-mono text-step--1 uppercase text-gold;
+    letter-spacing: 0.14em;
+  }
+  .card .frameno {
+    @apply font-mono text-step--1 text-paper-faint;
+    letter-spacing: 0.1em;
+    flex: none;
   }
   .card h3 {
-    @apply font-display font-medium text-step-2;
-    line-height: 1.05;
-    margin: 16px 0 6px;
+    @apply font-display font-medium text-step-1;
+    line-height: 1.12;
+    margin: 0 0 8px;
     letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .card .card-client {
+    @apply font-mono text-paper-faint;
+    font-size: theme("fontSize.step--1");
+    letter-spacing: 0.1em;
+    margin: 0 0 12px;
   }
   .card .meta {
     @apply text-paper-dim font-light;
     font-size: theme("fontSize.step--1");
-    max-width: 40ch;
+    line-height: 1.5;
+    margin: 0;
   }
   .card .go {
     @apply inline-flex items-center font-mono text-step--1 uppercase text-paper;
     gap: 9px;
-    margin-top: 18px;
+    margin-top: auto;
+    padding-top: 18px;
     letter-spacing: 0.1em;
   }
   .card .go .arw {
@@ -375,72 +408,6 @@
   }
   .card:hover .go .arw {
     transform: translateX(6px);
-  }
-  .card .frameno {
-    @apply absolute font-mono text-step--1 text-paper-faint;
-    top: 22px;
-    right: 24px;
-    letter-spacing: 0.1em;
-  }
-  .card.feature {
-    grid-column: span 2;
-    min-height: 360px;
-  }
-  @media (max-width: 720px) {
-    .card.feature {
-      grid-column: span 1;
-    }
-  }
-
-  /* ---------- work-card thumbnails ---------- */
-  .card-thumb {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-    transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1),
-      filter 0.6s ease;
-    filter: saturate(1.02) contrast(1.02);
-  }
-  .card-thumb.thumb-failed {
-    display: none;
-  }
-  .card:hover .card-thumb {
-    transform: scale(1.05);
-    filter: saturate(1.15) brightness(1.06);
-  }
-  .card-scrim {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: linear-gradient(
-      180deg,
-      rgba(10, 10, 12, 0.62) 0%,
-      rgba(10, 10, 12, 0.14) 34%,
-      rgba(10, 10, 12, 0.4) 66%,
-      rgba(10, 10, 12, 0.92) 100%
-    );
-  }
-  /* keep card text above the thumbnail + scrim */
-  .card .tag,
-  .card .role,
-  .card h3,
-  .card .card-client,
-  .card .meta,
-  .card .go {
-    position: relative;
-    z-index: 2;
-  }
-  /* year stays pinned top-right (absolute from the base rule) — just lift it */
-  .card .frameno {
-    z-index: 2;
-  }
-  .card .card-client {
-    @apply font-mono text-step--1 uppercase text-paper-faint;
-    letter-spacing: 0.12em;
-    margin: 0 0 8px;
   }
 
   /* ---------- filter bar ---------- */
