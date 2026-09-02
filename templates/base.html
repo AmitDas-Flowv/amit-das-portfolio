@@ -32,6 +32,17 @@
 </footer>
 
 <script>
+  // Thumbnail fallback: YouTube maxres 404s on some videos — retry hqdefault,
+  // then hide the <img> so the card's graded gradient shows through.
+  function thumbFallback(img){
+    if(img.dataset.yt && !img.dataset.tried){
+      img.dataset.tried = '1';
+      img.src = 'https://img.youtube.com/vi/' + img.dataset.yt + '/hqdefault.jpg';
+    } else {
+      img.classList.add('thumb-failed');
+    }
+  }
+
   // sticky nav state
   var nav = document.getElementById('nav');
   var onScroll = function(){ nav.classList.toggle('solid', window.scrollY > 40); };
@@ -46,6 +57,20 @@
     if(el.closest('.hero')) el.style.transitionDelay = (i*0.09)+'s';
     io.observe(el);
   });
+
+  // Hero auto-montage: crossfade the work stills behind the type. Static on
+  // reduced-motion; silently absent if no frames rendered.
+  (function(){
+    var frames = [].slice.call(document.querySelectorAll('#hero-montage .montage-frame'));
+    if(frames.length < 2) return;
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var i = 0;
+    setInterval(function(){
+      frames[i].classList.remove('on');
+      i = (i + 1) % frames.length;
+      frames[i].classList.add('on');
+    }, 5200);
+  })();
 </script>
 {% block scripts %}{% endblock %}
 </body>
