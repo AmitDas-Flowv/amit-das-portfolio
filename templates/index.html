@@ -3,6 +3,17 @@
 {% block content %}
 <!-- ============ HERO ============ -->
 <section class="hero wrap" id="top">
+  <div class="hero-montage" id="hero-montage" aria-hidden="true">
+    {% if REEL.mp4 %}
+    <video class="hero-reel" autoplay muted loop playsinline>
+      <source src="{{ url_for('static', filename=REEL.mp4) }}" type="video/mp4">
+    </video>
+    {% else %}
+    {% for f in MONTAGE[:9] %}
+    <div class="montage-frame{% if loop.first %} on{% endif %}" style="background-image:url('{{ f }}')"></div>
+    {% endfor %}
+    {% endif %}
+  </div>
   <div class="eyebrow reveal">
     <span class="dot"></span>
     <span>{{ SITE.current }}</span>
@@ -36,52 +47,56 @@
   </div>
 </section>
 
-<!-- ============ AI WORK ============ -->
+<!-- ============ WORK — the inner content of a card ============ -->
+{% macro card_inner(w) %}
+  {% if w.thumb_src %}
+  <img class="card-thumb"
+       src="{% if w.thumb_external %}{{ w.thumb_src }}{% else %}{{ url_for('static', filename=w.thumb_src) }}{% endif %}"
+       alt="{{ w.title }}" loading="lazy"
+       {% if w.yt_id %}data-yt="{{ w.yt_id }}"{% endif %}
+       onerror="thumbFallback(this)">
+  <span class="card-scrim"></span>
+  {% endif %}
+  <span class="role">{{ w.role }}</span>
+  {% if w.year %}<span class="frameno">{{ w.year }}</span>{% endif %}
+  <h3>{{ w.title | safe }}</h3>
+  {% if w.client %}<p class="card-client">{{ w.client }}</p>{% endif %}
+  <p class="meta">{{ w.meta | safe }}</p>
+  {% if w.cta %}<span class="go"><span class="role">{{ w.cta }}</span><span class="arw">→</span></span>{% endif %}
+{% endmacro %}
+
+<!-- ============ WORK — intro + filter bar ============ -->
 <section class="section-block wrap" id="work">
-  <div class="cue reveal"><span class="n">00:02</span> — Current Chapter · Published AI Films</div>
-  <h2 class="section-head reveal" style="max-width:16ch">The AI Director’s reel.</h2>
-  <p class="lede reveal" style="margin-bottom:clamp(40px,6vh,64px)">Four public releases for T-Series’ Project Fly — each owned start to finish: AI generation, direction and edit.</p>
+  <div class="cue reveal"><span class="n">00:02</span> — Selected Work · By Discipline</div>
+  <h2 class="section-head reveal" style="max-width:18ch">One body of work, many rooms.</h2>
+  <p class="lede reveal" style="margin-bottom:clamp(28px,4vh,44px)">From end-to-end AI films to luxury fashion, music, brand campaigns, travel, food and live direction — filter to the work that fits the brief.</p>
+
+  <div class="filter-bar reveal" id="filter-bar" role="tablist" aria-label="Filter work by discipline">
+    <button class="chip active" data-filter="all" type="button">All</button>
+    {% for cat in CATEGORIES %}
+    <button class="chip" data-filter="{{ cat.slug }}" type="button">{{ cat.label }}</button>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ============ WORK — one section per vertical ============ -->
+{% for group in WORK_GROUPS %}
+<section class="section-block tight wrap work-cat" data-category="{{ group.slug }}" id="cat-{{ group.slug }}">
+  <div class="cue reveal"><span class="n">{{ '%02d'|format(loop.index) }}</span> — {{ group.label }}</div>
+  <h2 class="section-head reveal" style="max-width:22ch">{{ group.label }}</h2>
+  <p class="lede reveal" style="margin-bottom:clamp(30px,5vh,50px); max-width:46ch">{{ group.blurb }}</p>
 
   <div class="grid-work">
-    {% for film in AI_FILMS %}
-    <a class="card reveal{% if film.feature %} feature{% endif %}" href="{{ film.href }}" target="_blank" rel="noopener">
-      <span class="frameno">{{ film.frameno }}</span>
-      <span class="tag">{{ film.tag }}</span>
-      <h3>{{ film.title | safe }}</h3>
-      <p class="meta">{{ film.meta | safe }}</p>
-      <span class="go"><span class="role">{{ film.cta }}</span><span class="arw">→</span></span>
-    </a>
+    {% for w in group.pieces %}
+    {% if w.href %}
+    <a class="card work-card reveal{% if w.feature %} feature{% endif %}" data-tags="{{ w.tagstr }}" href="{{ w.href }}" target="_blank" rel="noopener">{{ card_inner(w) }}</a>
+    {% else %}
+    <div class="card work-card reveal{% if w.feature %} feature{% endif %}" data-tags="{{ w.tagstr }}">{{ card_inner(w) }}</div>
+    {% endif %}
     {% endfor %}
   </div>
 </section>
-
-<!-- ============ CINEMA WORK ============ -->
-<section class="section-block tight wrap">
-  <div class="cue reveal"><span class="n">00:03</span> — Selected Cinematography &amp; Direction</div>
-  <h2 class="section-head reveal" style="max-width:18ch">Before the models, the lens.</h2>
-
-  <div class="grid-work reveal" style="margin-top:clamp(30px,5vh,52px)">
-    {% for w in CINEMA_WORK %}
-    <a class="card" href="{{ w.href }}" target="_blank" rel="noopener">
-      <span class="role">{{ w.role }}</span>
-      <h3>{{ w.title | safe }}</h3>
-      <p class="meta">{{ w.meta | safe }}</p>
-      <span class="go"><span class="role">Watch</span><span class="arw">→</span></span>
-    </a>
-    {% endfor %}
-  </div>
-
-  <!-- signature credits without a single public link -->
-  <div class="sig reveal">
-    {% for c in SIGNATURE %}
-    <div class="row">
-      <div class="tag">{{ c.tag }}</div>
-      <h4>{{ c.title }}</h4>
-      <p>{{ c.body | safe }}</p>
-    </div>
-    {% endfor %}
-  </div>
-</section>
+{% endfor %}
 
 <!-- ============ TIMELINE ============ -->
 <section class="section-block wrap">
@@ -189,6 +204,47 @@
         })
         .finally(function(){ btn.disabled = false; });
     });
+  })();
+
+  // ---- Work filter bar + shareable deep-links (#fashion or ?focus=ai) ----
+  (function(){
+    var bar = document.getElementById('filter-bar');
+    if(!bar) return;
+    var chips = [].slice.call(bar.querySelectorAll('.chip'));
+    var cards = [].slice.call(document.querySelectorAll('.work-card'));
+    var cats  = [].slice.call(document.querySelectorAll('.work-cat'));
+    var valid = chips.map(function(c){ return c.dataset.filter; });
+
+    function apply(filter){
+      if(valid.indexOf(filter) < 0) filter = 'all';
+      chips.forEach(function(c){ c.classList.toggle('active', c.dataset.filter === filter); });
+      cards.forEach(function(card){
+        var show = filter === 'all' ||
+          (' ' + (card.dataset.tags || '') + ' ').indexOf(' ' + filter + ' ') > -1;
+        card.classList.toggle('is-hidden', !show);
+      });
+      cats.forEach(function(sec){
+        sec.classList.toggle('is-hidden', !sec.querySelector('.work-card:not(.is-hidden)'));
+      });
+    }
+
+    function fromUrl(){
+      var hash = (location.hash || '').replace('#', '');
+      var focus = new URLSearchParams(location.search).get('focus');
+      apply(focus || hash || 'all');
+    }
+
+    chips.forEach(function(c){
+      c.addEventListener('click', function(){
+        var f = c.dataset.filter;
+        apply(f);
+        if(history.replaceState){
+          history.replaceState(null, '', f === 'all' ? location.pathname : '#' + f);
+        }
+      });
+    });
+    window.addEventListener('hashchange', fromUrl);
+    fromUrl();
   })();
 </script>
 {% endblock %}
