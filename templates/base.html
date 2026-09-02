@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{% block title %}{{ SITE.name }}{% endblock %}</title>
-<meta name="description" content="{{ SITE.meta_description }}" />
+<meta name="description" content="{% block description %}{{ SITE.meta_description }}{% endblock %}" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&family=Hanken+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
@@ -17,7 +17,7 @@
 <div class="vignette"></div>
 
 <header class="site-nav" id="nav">
-  <div class="mark">AMIT <b>DAS</b></div>
+  <a class="mark" href="{{ url_for('index') }}">AMIT <b>DAS</b></a>
   <nav>
     {% for item in NAV %}<a href="{{ item.href }}">{{ item.label }}</a>{% endfor %}
   </nav>
@@ -70,6 +70,107 @@
       i = (i + 1) % frames.length;
       frames[i].classList.add('on');
     }, 5200);
+  })();
+
+  // Share button: native share on mobile, else copy the absolute link.
+  function copyShareLink(btn){
+    var path = btn.getAttribute('data-path') || location.pathname;
+    var url = location.origin + path;
+    var done = function(){
+      var label = btn.querySelector('.share-label');
+      if(!label) return;
+      var prev = label.textContent;
+      label.textContent = 'Copied ✓';
+      btn.classList.add('copied');
+      setTimeout(function(){ label.textContent = prev; btn.classList.remove('copied'); }, 1600);
+    };
+    if(navigator.share && matchMedia('(max-width: 720px)').matches){
+      navigator.share({ url: url, title: document.title }).then(done).catch(function(){});
+      return;
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(done).catch(function(){ fallbackCopy(url, done); });
+    } else {
+      fallbackCopy(url, done);
+    }
+  }
+  function fallbackCopy(text, done){
+    try{
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.style.position='fixed'; ta.style.opacity='0';
+      document.body.appendChild(ta); ta.select();
+      document.execCommand('copy'); document.body.removeChild(ta); done();
+    }catch(e){}
+  }
+
+  // Contact form submit (present on home + section pages)
+  (function(){
+    var form = document.getElementById('contact-form');
+    if(!form) return;
+    var statusEl = document.getElementById('cf-status');
+    var btn = document.getElementById('cf-submit');
+    form.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      statusEl.className = 'form-status';
+      statusEl.textContent = 'Sending…';
+      btn.disabled = true;
+      var data = new FormData(form);
+      fetch('{{ url_for("contact") }}', { method:'POST', body:data, headers:{ 'X-Requested-With':'fetch' } })
+        .then(function(r){ return r.json().then(function(j){ return { ok:r.ok, body:j }; }); })
+        .then(function(res){
+          if(res.ok && res.body.ok){
+            form.reset();
+            statusEl.className = 'form-status ok';
+            statusEl.textContent = res.body.message || 'Thank you — your message is on its way.';
+          } else {
+            statusEl.className = 'form-status err';
+            statusEl.textContent = (res.body && res.body.error) || 'Something went wrong. Please try the email link above.';
+          }
+        })
+        .catch(function(){
+          statusEl.className = 'form-status err';
+          statusEl.textContent = 'Network error. Please try the email link above.';
+        })
+        .finally(function(){ btn.disabled = false; });
+    });
+  })();
+
+  // Work filter bar + shareable deep-links (#fashion or ?focus=ai) — home only
+  (function(){
+    var bar = document.getElementById('filter-bar');
+    if(!bar) return;
+    var chips = [].slice.call(bar.querySelectorAll('.chip'));
+    var cards = [].slice.call(document.querySelectorAll('.work-card'));
+    var cats  = [].slice.call(document.querySelectorAll('.work-cat'));
+    var valid = chips.map(function(c){ return c.dataset.filter; });
+    function apply(filter){
+      if(valid.indexOf(filter) < 0) filter = 'all';
+      chips.forEach(function(c){ c.classList.toggle('active', c.dataset.filter === filter); });
+      cards.forEach(function(card){
+        var show = filter === 'all' ||
+          (' ' + (card.dataset.tags || '') + ' ').indexOf(' ' + filter + ' ') > -1;
+        card.classList.toggle('is-hidden', !show);
+      });
+      cats.forEach(function(sec){
+        sec.classList.toggle('is-hidden', !sec.querySelector('.work-card:not(.is-hidden)'));
+      });
+    }
+    function fromUrl(){
+      var hash = (location.hash || '').replace('#', '');
+      var focus = new URLSearchParams(location.search).get('focus');
+      apply(focus || hash || 'all');
+    }
+    chips.forEach(function(c){
+      c.addEventListener('click', function(){
+        var f = c.dataset.filter;
+        apply(f);
+        if(history.replaceState){
+          history.replaceState(null, '', f === 'all' ? location.pathname : '#' + f);
+        }
+      });
+    });
+    window.addEventListener('hashchange', fromUrl);
+    fromUrl();
   })();
 </script>
 {% block scripts %}{% endblock %}

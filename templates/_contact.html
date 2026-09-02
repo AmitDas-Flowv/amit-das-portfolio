@@ -1,0 +1,36 @@
+<!-- ============ CONTACT (shared) ============ -->
+<section class="contact wrap" id="contact">
+  <div class="cue reveal" style="justify-content:center"><span class="n">{{ contact_cue_no | default('00:06') }}</span> — {{ CONTACT.cue }}</div>
+  <p class="big reveal">{{ CONTACT.big }}</p>
+
+  <form class="contact-form reveal" id="contact-form" novalidate>
+    <div class="field-row">
+      <div>
+        <label for="cf-name">Name</label>
+        <input type="text" id="cf-name" name="name" autocomplete="name" placeholder="Your name" required />
+      </div>
+      <div>
+        <label for="cf-email">Email</label>
+        <input type="email" id="cf-email" name="email" autocomplete="email" placeholder="you@studio.com" required />
+      </div>
+    </div>
+    <div>
+      <label for="cf-message">Message</label>
+      <textarea id="cf-message" name="message" placeholder="Tell me about the project…" required></textarea>
+    </div>
+    <!-- honeypot: bots fill this, humans never see it -->
+    <div class="hp" aria-hidden="true">
+      <label for="cf-company">Company</label>
+      <input type="text" id="cf-company" name="company" tabindex="-1" autocomplete="off" />
+    </div>
+    <button type="submit" id="cf-submit"><span>Send message</span><span class="arw">→</span></button>
+    <p class="form-status" id="cf-status" role="status" aria-live="polite"></p>
+  </form>
+
+  <div class="reveal" style="margin-top:clamp(28px,4vh,40px)">
+    <a class="mailto" href="mailto:{{ SITE.email }}">{{ SITE.email }}</a>
+  </div>
+  <div class="socials reveal">
+    {% for s in SOCIALS %}<a href="{{ s.href }}" target="_blank" rel="noopener">{{ s.label }}</a>{% endfor %}
+  </div>
+</section>

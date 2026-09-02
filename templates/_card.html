@@ -1,0 +1,35 @@
+{# Work card inner content — shared by index.html and section.html #}
+{% macro card_inner(w) %}
+  <div class="card-media">
+    {% if w.thumb_src %}
+    <img class="card-thumb"
+         src="{% if w.thumb_external %}{{ w.thumb_src }}{% else %}{{ url_for('static', filename=w.thumb_src) }}{% endif %}"
+         alt="{{ w.title }}" loading="lazy"
+         {% if w.yt_id %}data-yt="{{ w.yt_id }}"{% endif %}
+         onerror="thumbFallback(this)">
+    {% endif %}
+  </div>
+  <div class="card-body">
+    <div class="card-head">
+      <span class="role">{{ w.role }}</span>
+      {% if w.year %}<span class="frameno">{{ w.year }}</span>{% endif %}
+    </div>
+    <h3>{{ w.title | safe }}</h3>
+    {% if w.client %}<p class="card-client">{{ w.client }}</p>{% endif %}
+    <p class="meta">{{ w.meta | safe }}</p>
+    {% if w.cta %}<span class="go">{{ w.cta }}<span class="arw">→</span></span>{% endif %}
+  </div>
+{% endmacro %}
+
+{# One work grid — used inside a category section on either page #}
+{% macro work_grid(pieces) %}
+  <div class="grid-work">
+    {% for w in pieces %}
+    {% if w.href %}
+    <a class="card work-card reveal" data-tags="{{ w.tagstr }}" href="{{ w.href }}" target="_blank" rel="noopener">{{ card_inner(w) }}</a>
+    {% else %}
+    <div class="card work-card reveal" data-tags="{{ w.tagstr }}">{{ card_inner(w) }}</div>
+    {% endif %}
+    {% endfor %}
+  </div>
+{% endmacro %}
