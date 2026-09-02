@@ -1,33 +1,19 @@
 # Work thumbnails
 
-Drop a still here and it appears on that piece's card automatically — no code
-change needed. The file just has to be named after the piece's **slug**.
+Drop a still here named after a piece's **slug** and it appears on that card
+automatically — no code change. Format: `.jpg`/`.jpeg`/`.webp`/`.png` (checked in
+that order), 16:9, ~1280–1600px wide (`object-fit: cover`). The slug is the
+`"slug"` value in `content.py`.
 
-- **Format:** `.jpg`, `.jpeg`, `.webp`, or `.png` (checked in that order)
-- **Aspect / size:** 16:9, ~1280×720 (larger is fine; it's `object-fit: cover`)
-- **Name:** `<slug>.jpg` — the slug is the `"slug"` value in `content.py`.
+## Current state
 
-YouTube-linked pieces already pull their still automatically, so you only need
-to add files for the non-YouTube pieces. Slugs that currently have no image:
+- **16 YouTube-linked pieces** pull their still automatically — no file needed.
+- **17 pieces** now ship an **AI-generated placeholder still** (Magnific,
+  cinematic 16:9). These are stand-ins — replace any of them with a real frame
+  from the actual production by overwriting the same filename:
 
-| Slug | Piece |
-|------|-------|
-| `nippon-lookbook` | Nippon Jewellery — Lookbook |
-| `arpita-mehta` | JM × Arpita Mehta |
-| `lakme` | Lakmé — Fashion Films (Instagram) |
-| `amit-aggarwal` | Amit Aggarwal — Fashion Film (Instagram) |
-| `mercury-ring` | Mercury Ring |
-| `yamaha-cfx` | Yamaha Music — CFX |
-| `soi` | Symphony Orchestra of India |
-| `netflix-royals` | Netflix — The Royals |
-| `agoda` | Agoda — Travel (Instagram) |
-| `akina` | Akina — Bandra (Instagram) |
-| `faasos` | Faasos — Pizza Wraps Launch |
-| `oven-story` | Oven Story |
-| `eu-food-show` | European Union — Food Show (Instagram) |
-| `mumbai-indians` | Mumbai Indians — IPL |
-| `film-83` | 83 — Film Marketing |
-| `booyah` | Garena — Booyah Awards |
-| `football` | Football |
+  `mercury-ring, nippon-lookbook, arpita-mehta, lakme, amit-aggarwal,
+  yamaha-cfx, soi, netflix-royals, agoda, akina, faasos, oven-story,
+  eu-food-show, mumbai-indians, film-83, booyah, football`
 
-Example: add `mercury-ring.jpg` to this folder and the Mercury Ring card shows it.
+Example: drop a real `mercury-ring.jpg` here and it replaces the placeholder.
