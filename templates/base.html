@@ -103,38 +103,6 @@
     }catch(e){}
   }
 
-  // Contact form submit (present on home + section pages)
-  (function(){
-    var form = document.getElementById('contact-form');
-    if(!form) return;
-    var statusEl = document.getElementById('cf-status');
-    var btn = document.getElementById('cf-submit');
-    form.addEventListener('submit', function(ev){
-      ev.preventDefault();
-      statusEl.className = 'form-status';
-      statusEl.textContent = 'Sending…';
-      btn.disabled = true;
-      var data = new FormData(form);
-      fetch('{{ url_for("contact") }}', { method:'POST', body:data, headers:{ 'X-Requested-With':'fetch' } })
-        .then(function(r){ return r.json().then(function(j){ return { ok:r.ok, body:j }; }); })
-        .then(function(res){
-          if(res.ok && res.body.ok){
-            form.reset();
-            statusEl.className = 'form-status ok';
-            statusEl.textContent = res.body.message || 'Thank you — your message is on its way.';
-          } else {
-            statusEl.className = 'form-status err';
-            statusEl.textContent = (res.body && res.body.error) || 'Something went wrong. Please try the email link above.';
-          }
-        })
-        .catch(function(){
-          statusEl.className = 'form-status err';
-          statusEl.textContent = 'Network error. Please try the email link above.';
-        })
-        .finally(function(){ btn.disabled = false; });
-    });
-  })();
-
   // Work filter bar + shareable deep-links (#fashion or ?focus=ai) — home only
   (function(){
     var bar = document.getElementById('filter-bar');

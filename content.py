@@ -18,7 +18,7 @@ SITE = {
     "last": "Das",
     "role": "AI Director & Creative Director",
     "location": "Mumbai, India",
-    "current": "AI Director · T-Series — Project Fly",
+    "current": "AI Director · T-Series",
     "email": "amit.d070@gmail.com",
     "meta_description": (
         "Amit Das — AI Director & Creative Director. Luxury, jewellery and "
@@ -106,10 +106,10 @@ CATEGORIES = [
         "content with generative pipelines.",
     },
     {
-        "slug": "fashion",
-        "label": "Fashion, Luxury & Jewellery",
-        "blurb": "A luxury sensibility across jewellery, fashion and beauty — "
-        "studio fashion films, lookbooks and product-led design.",
+        "slug": "brands",
+        "label": "Brands & OTT",
+        "blurb": "Campaign films and digital commercials for global brands and "
+        "streaming platforms — from concept to delivery.",
     },
     {
         "slug": "music",
@@ -118,16 +118,16 @@ CATEGORIES = [
         "direction — including six-camera orchestral PCR calling.",
     },
     {
-        "slug": "brands",
-        "label": "Brands & OTT",
-        "blurb": "Campaign films and digital commercials for global brands and "
-        "streaming platforms — from concept to delivery.",
-    },
-    {
         "slug": "auto",
         "label": "Automotive & Travel",
         "blurb": "Long-form expedition and road films with a cinematographer’s "
         "eye for landscape, motion and machine.",
+    },
+    {
+        "slug": "fashion",
+        "label": "Fashion, Luxury & Jewellery",
+        "blurb": "A luxury sensibility across jewellery, fashion and beauty — "
+        "studio fashion films, lookbooks and product-led design.",
     },
     {
         "slug": "food",
@@ -144,11 +144,11 @@ CATEGORIES = [
 ]
 
 WORK = [
-    # ---- AI & Generative (T-Series · Project Fly) ----
+    # ---- AI & Generative (T-Series) ----
     {
         "slug": "dhamal", "primary": "ai", "tags": ["ai", "music"],
         "title": "Dhamal", "role": "AI Director",
-        "client": "T-Series · Project Fly", "year": "2026",
+        "client": "T-Series", "year": "2026",
         "meta": "End-to-end AI music video — generation, direction and edit, "
         "first frame to final cut.",
         "href": "https://www.youtube.com/watch?v=U6kMnUTqaeQ", "feature": True,
@@ -156,14 +156,14 @@ WORK = [
     {
         "slug": "selfmade", "primary": "ai", "tags": ["ai", "music"],
         "title": "Selfmade", "role": "AI Director",
-        "client": "T-Series · Project Fly", "year": "2026",
+        "client": "T-Series", "year": "2026",
         "meta": "A fully AI-generated music film — directed and cut in-house.",
         "href": "https://youtu.be/ZPQ_FViOwTY", "feature": True,
     },
     {
         "slug": "balle-balbiro", "primary": "ai", "tags": ["ai", "music"],
         "title": "Balle Balbiro Balle", "role": "AI Director",
-        "client": "T-Series · Project Fly", "year": "2026",
+        "client": "T-Series", "year": "2026",
         "meta": "AI music video for Jasbir Jassi — generation, direction and "
         "edit, first frame to final cut.",
         "href": "https://youtu.be/b07AnV4KvoQ", "feature": True,
@@ -171,14 +171,14 @@ WORK = [
     {
         "slug": "amrit-kuber", "primary": "ai", "tags": ["ai"],
         "title": "Amrit Gathaye — Dhandevta Kuber", "role": "AI Director",
-        "client": "T-Series · Project Fly", "year": "2026",
+        "client": "T-Series", "year": "2026",
         "meta": "Mythology reimagined through generative image and video pipelines.",
         "href": "https://www.youtube.com/watch?v=OfO3CA9Yq3Y",
     },
     {
         "slug": "amrit-promo", "primary": "ai", "tags": ["ai"],
         "title": "Amrit Gathaye — Promo", "role": "AI Director",
-        "client": "T-Series · Project Fly", "year": "2026",
+        "client": "T-Series", "year": "2026",
         "meta": "Campaign promo cut — pacing, grade and sound built for the feed.",
         "href": "https://youtu.be/aeL9m0AMjeM",
     },
@@ -398,7 +398,7 @@ TIMELINE = [
     {
         "year": "2026 —",
         "title": "AI Director",
-        "org": "T-Series · Project Fly",
+        "org": "T-Series",
         "body": "Contract, full-time. End-to-end AI-video production across "
         "music video and mythology.",
         "now": True,
@@ -496,6 +496,7 @@ CLIENTS = [
 
 SOCIALS = [
     {"label": "Instagram", "href": "https://instagram.com/amitda5"},
+    {"label": "FLOWV", "href": "https://www.instagram.com/flowvvvvv"},
     {"label": "Portfolio", "href": "https://amitdasvideography.myportfolio.com/"},
     {
         "label": "Behance",
