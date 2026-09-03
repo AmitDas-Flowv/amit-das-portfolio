@@ -793,90 +793,39 @@
     @apply text-gold-lift;
   }
 
-  /* ---------- contact form ---------- */
-  .contact-form {
-    @apply grid text-left;
-    max-width: 40rem;
-    margin: clamp(34px, 5vh, 56px) auto 0;
-    gap: 18px;
+  /* ---------- email CTA (replaces the contact form) ---------- */
+  .email-cta {
+    @apply inline-flex items-center text-paper;
+    gap: 12px;
+    margin: clamp(30px, 5vh, 52px) auto 0;
+    padding: 14px 26px;
+    border: 1px solid theme("colors.hair.DEFAULT");
+    background: rgba(201, 161, 90, 0.06);
+    transition: border-color 0.3s ease, background 0.3s ease,
+      transform 0.3s ease;
   }
-  .contact-form .field-row {
-    @apply grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-  }
-  @media (max-width: 560px) {
-    .contact-form .field-row {
-      grid-template-columns: 1fr;
-    }
-  }
-  .contact-form label {
-    @apply block font-mono text-step--1 uppercase text-paper-faint;
-    letter-spacing: 0.14em;
-    margin-bottom: 8px;
-  }
-  .contact-form input,
-  .contact-form textarea {
-    @apply w-full bg-ink-2 text-paper font-body;
-    font-size: theme("fontSize.step-0");
-    padding: 14px 16px;
-    border: 1px solid theme("colors.hair.soft");
-    transition: border-color 0.3s ease, background 0.3s ease;
-  }
-  .contact-form textarea {
-    min-height: 140px;
-    resize: vertical;
-  }
-  .contact-form input:focus,
-  .contact-form textarea:focus {
-    outline: none;
+  .email-cta:hover {
     border-color: theme("colors.gold.DEFAULT");
-    background: theme("colors.ink.3");
-  }
-  .contact-form input::placeholder,
-  .contact-form textarea::placeholder {
-    @apply text-paper-faint;
-    opacity: 0.7;
-  }
-  /* honeypot — hidden from real users */
-  .contact-form .hp {
-    position: absolute;
-    left: -9999px;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-  }
-  .contact-form button {
-    @apply inline-flex items-center justify-center font-mono text-step--1 uppercase text-ink cursor-pointer;
-    justify-self: start;
-    letter-spacing: 0.16em;
-    gap: 10px;
-    padding: 15px 30px;
-    background: theme("colors.gold.DEFAULT");
-    border: 1px solid theme("colors.gold.DEFAULT");
-    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
-  }
-  .contact-form button:hover {
-    background: theme("colors.gold.lift");
-    border-color: theme("colors.gold.lift");
+    background: rgba(201, 161, 90, 0.12);
     transform: translateY(-2px);
   }
-  .contact-form button:disabled {
-    opacity: 0.55;
-    cursor: not-allowed;
-    transform: none;
+  .email-cta .email-ico {
+    @apply inline-flex items-center text-gold;
   }
-  .form-status {
-    @apply font-mono text-step--1 text-paper-dim;
-    letter-spacing: 0.04em;
-    min-height: 1.4em;
-    margin-top: 4px;
+  .email-cta .email-label {
+    @apply font-mono text-step--1 uppercase text-gold;
+    letter-spacing: 0.18em;
   }
-  .form-status.ok {
-    @apply text-gold-lift;
+  .email-cta .email-addr {
+    @apply font-display text-step-1 text-paper;
+    letter-spacing: 0.01em;
   }
-  .form-status.err {
-    color: #e08b7a;
+  @media (max-width: 480px) {
+    .email-cta {
+      flex-direction: column;
+      gap: 6px;
+      text-align: center;
+    }
   }
 
   /* ---------- footer ---------- */
