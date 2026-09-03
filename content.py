@@ -50,7 +50,7 @@ STATS = [
     {"value": "13", "suffix": "+", "label": "Years directing image"},
     {"value": "100", "suffix": "+", "label": "Productions & commissions"},
     {"value": "40", "suffix": "+", "label": "Brands & platforms"},
-    {"value": "4", "suffix": "", "label": "Published AI films"},
+    {"value": "5", "suffix": "", "label": "Published AI films"},
 ]
 
 # --- Introduction ---------------------------------------------------------
@@ -159,6 +159,14 @@ WORK = [
         "client": "T-Series · Project Fly", "year": "2026",
         "meta": "A fully AI-generated music film — directed and cut in-house.",
         "href": "https://youtu.be/ZPQ_FViOwTY", "feature": True,
+    },
+    {
+        "slug": "balle-balbiro", "primary": "ai", "tags": ["ai", "music"],
+        "title": "Balle Balbiro Balle", "role": "AI Director",
+        "client": "T-Series · Project Fly", "year": "2026",
+        "meta": "AI music video for Jasbir Jassi — generation, direction and "
+        "edit, first frame to final cut.",
+        "href": "https://youtu.be/b07AnV4KvoQ", "feature": True,
     },
     {
         "slug": "amrit-kuber", "primary": "ai", "tags": ["ai"],
