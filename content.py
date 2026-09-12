@@ -50,7 +50,7 @@ STATS = [
     {"value": "13", "suffix": "+", "label": "Years directing image"},
     {"value": "100", "suffix": "+", "label": "Productions & commissions"},
     {"value": "40", "suffix": "+", "label": "Brands & platforms"},
-    {"value": "5", "suffix": "", "label": "Published AI films"},
+    {"value": "7", "suffix": "", "label": "Published AI films"},
 ]
 
 # --- Introduction ---------------------------------------------------------
@@ -145,6 +145,22 @@ CATEGORIES = [
 
 WORK = [
     # ---- AI & Generative (T-Series) ----
+    {
+        "slug": "amrit-barbarik", "primary": "ai", "tags": ["ai"],
+        "title": "Amrit Gaathayein — Barbarik", "role": "AI Director",
+        "client": "T-Series", "year": "2026",
+        "meta": "Barbarik could have ended the Mahabharat war in a minute — so "
+        "why did Krishna stop him?",
+        "href": "https://youtu.be/vb9YkbRR2A4",
+    },
+    {
+        "slug": "amrit-padmanabhaswamy", "primary": "ai", "tags": ["ai"],
+        "title": "Amrit Gaathayein — Padmanabhaswamy", "role": "AI Director",
+        "client": "T-Series", "year": "2026",
+        "meta": "Why were Shri Padmanabhaswamy Mandir’s last two vaults never "
+        "opened?",
+        "href": "https://youtu.be/90an5w1cueA",
+    },
     {
         "slug": "dhamal", "primary": "ai", "tags": ["ai", "music"],
         "title": "Dhamal", "role": "AI Director",
