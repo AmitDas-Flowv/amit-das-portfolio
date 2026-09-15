@@ -37,6 +37,24 @@
    COMPONENTS — the cinema world: atmosphere, furniture, cards, marquee
    ========================================================================= */
 @layer components {
+  /* ---------- motion keyframes ----------
+     Defined here (not only in tailwind.config.js) because Tailwind purges
+     config-defined @keyframes unless their `animate-*` utility is used in the
+     scanned HTML. These are referenced by raw `animation:` declarations below
+     (marquee, scrollcue, glow), so they must live in the CSS itself. */
+  @keyframes slide {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes drop {
+    0%, 100% { transform: scaleY(0.3); opacity: 0.4; }
+    50% { transform: scaleY(1); opacity: 1; }
+  }
+  @keyframes breathe {
+    0%, 100% { opacity: 0.82; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(-1.5%); }
+  }
+
   /* ---------- ambient atmosphere (calm, no flicker) ---------- */
   .grain {
     position: fixed;
@@ -170,10 +188,10 @@
   /* NB: named .section-block (not .block) to avoid clashing with Tailwind's
      own .block display utility when used via @apply elsewhere. */
   .section-block {
-    padding: clamp(90px, 13vh, 160px) 0;
+    padding: clamp(58px, 8vh, 112px) 0;
   }
   .section-block.tight {
-    padding: clamp(70px, 9vh, 120px) 0;
+    padding: clamp(44px, 6vh, 84px) 0;
   }
 
   /* ---------- hero ---------- */
@@ -492,6 +510,79 @@
     @apply text-ink;
     background: theme("colors.gold.DEFAULT");
     border-color: theme("colors.gold.DEFAULT");
+  }
+
+  /* ---------- work intro: 2-column lead + discipline menu ---------- */
+  .work-intro {
+    @apply grid items-start;
+    grid-template-columns: 1fr 0.82fr;
+    gap: clamp(30px, 6vw, 80px);
+  }
+  @media (max-width: 860px) {
+    .work-intro {
+      grid-template-columns: 1fr;
+      gap: clamp(28px, 5vh, 40px);
+    }
+  }
+  .archive-link {
+    @apply inline-flex items-center font-mono text-step--1 uppercase text-paper-dim;
+    letter-spacing: 0.14em;
+    gap: 8px;
+    margin-top: clamp(20px, 3vh, 30px);
+    padding-bottom: 3px;
+    border-bottom: 1px solid theme("colors.hair.DEFAULT");
+    transition: color 0.25s ease, border-color 0.25s ease;
+  }
+  .archive-link:hover {
+    @apply text-gold-lift;
+    border-color: theme("colors.gold.DEFAULT");
+  }
+  .work-index-label {
+    @apply font-mono text-step--1 uppercase text-gold;
+    letter-spacing: 0.2em;
+    margin: 6px 0 10px;
+  }
+  @media (max-width: 860px) {
+    .work-index-label {
+      margin-top: 4px;
+    }
+  }
+  /* vertical variant of the filter bar (right column of the work intro) */
+  .filter-menu {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 0;
+    border-top: 1px solid theme("colors.hair.soft");
+  }
+  .filter-menu .chip {
+    @apply flex items-center justify-between;
+    text-align: left;
+    padding: 14px 2px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid theme("colors.hair.soft");
+    letter-spacing: 0.14em;
+  }
+  .filter-menu .chip .chip-mark {
+    @apply text-gold;
+    font-size: 0.6em;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .filter-menu .chip:hover {
+    @apply text-gold-lift;
+    background: linear-gradient(90deg, rgba(201, 161, 90, 0.06), transparent 80%);
+    border-color: theme("colors.hair.soft");
+  }
+  .filter-menu .chip.active {
+    @apply text-gold-lift bg-transparent;
+    border-color: theme("colors.hair.soft");
+  }
+  .filter-menu .chip.active .chip-mark {
+    opacity: 1;
+    transform: none;
   }
 
   /* filtered-out cards / empty category sections */
