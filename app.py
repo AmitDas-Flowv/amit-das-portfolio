@@ -5,7 +5,7 @@ Routes
 GET /              → renders the portfolio from ``content.py``.
 GET /work/<slug>   → a focused, shareable page for one work vertical.
 
-Contact is a plain ``mailto:`` link — there is no form endpoint.
+Contact is a plain ``mailto:`` link - there is no form endpoint.
 """
 
 from __future__ import annotations
@@ -26,7 +26,7 @@ def index():
 
 @app.route("/work/<slug>")
 def work_section(slug):
-    """A focused, shareable page for one vertical — e.g. /work/fashion."""
+    """A focused, shareable page for one vertical - e.g. /work/fashion."""
     group = content.group_for(slug)
     if group is None:
         abort(404)

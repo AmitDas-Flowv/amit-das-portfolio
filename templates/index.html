@@ -31,12 +31,12 @@
     {% endfor %}
   </div>
 
-  <div class="scrollcue"><span class="bar"></span><span>Scroll — Reel begins</span></div>
+  <div class="scrollcue"><span class="bar"></span><span>Scroll to begin</span></div>
 </section>
 
 <!-- ============ INTRO ============ -->
 <section class="section-block wrap" id="story">
-  <div class="cue reveal"><span class="n">00:01</span> — Introduction</div>
+  <div class="cue reveal"><span class="n">00:01</span> · Introduction</div>
   <div class="intro-grid">
     <div class="reveal">
       <h2 class="section-head">{{ INTRO.head | safe }}</h2>
@@ -48,13 +48,13 @@
   </div>
 </section>
 
-<!-- ============ WORK — intro + filter menu ============ -->
+<!-- ============ WORK - intro + filter menu ============ -->
 <section class="section-block wrap" id="work">
   <div class="work-intro">
     <div class="work-intro-lead reveal">
-      <div class="cue"><span class="n">00:02</span> — Selected Work · By Discipline</div>
+      <div class="cue"><span class="n">00:02</span> · Selected Work · By Discipline</div>
       <h2 class="section-head" style="max-width:14ch; margin-bottom:0.34em">One body of work, many rooms.</h2>
-      <p class="lede">From end-to-end AI films to luxury fashion, music, brand campaigns, travel, food and live direction — filter to the work that fits the brief, or open any discipline as its own shareable page.</p>
+      <p class="lede">From end-to-end AI films to luxury fashion, music, brand campaigns, travel, food and live. Filter to the work that fits the brief, or open any discipline as its own shareable page.</p>
       <a class="archive-link" href="{{ SITE.archive_url }}" target="_blank" rel="noopener">Full production archive <span aria-hidden="true">→</span></a>
     </div>
     <div class="work-index reveal">
@@ -69,10 +69,10 @@
   </div>
 </section>
 
-<!-- ============ WORK — one section per vertical ============ -->
+<!-- ============ WORK - one section per vertical ============ -->
 {% for group in WORK_GROUPS %}
 <section class="section-block tight wrap work-cat" data-category="{{ group.slug }}" id="cat-{{ group.slug }}">
-  <div class="cue reveal"><span class="n">{{ '%02d'|format(loop.index) }}</span> — {{ group.label }}</div>
+  <div class="cue reveal"><span class="n">{{ '%02d'|format(loop.index) }}</span> · {{ group.label }}</div>
   <div class="cat-head reveal">
     <h2 class="section-head" style="max-width:22ch; margin-bottom:0">{{ group.label }}</h2>
     <div class="cat-actions">
@@ -90,7 +90,7 @@
 
 <!-- ============ TIMELINE ============ -->
 <section class="section-block wrap">
-  <div class="cue reveal"><span class="n">00:04</span> — The Long Cut · Career</div>
+  <div class="cue reveal"><span class="n">00:04</span> · The Long Cut · Career</div>
   <div class="tl">
     {% for t in TIMELINE %}
     <div class="item{% if t.now %} now{% endif %} reveal"><div class="yr">{{ t.year }}</div><div class="body"><h4>{{ t.title }} <span>{{ t.org }}</span></h4><p>{{ t.body | safe }}</p></div></div>
@@ -100,7 +100,7 @@
 
 <!-- ============ CRAFT ============ -->
 <section class="section-block wrap" id="craft">
-  <div class="cue reveal"><span class="n">00:05</span> — The Toolkit · Craft</div>
+  <div class="cue reveal"><span class="n">00:05</span> · The Toolkit · Craft</div>
   <h2 class="section-head reveal" style="max-width:18ch; margin-bottom:clamp(40px,6vh,64px)">Direction, from silver halide to latent space.</h2>
   <div class="cap-grid">
     {% for cap in CAPABILITIES %}

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* =========================================================================
-   BASE — global behaviour Tailwind's reset doesn't cover
+   BASE - global behaviour Tailwind's reset doesn't cover
    ========================================================================= */
 @layer base {
   html {
@@ -34,7 +34,7 @@
 }
 
 /* =========================================================================
-   COMPONENTS — the cinema world: atmosphere, furniture, cards, marquee
+   COMPONENTS - the cinema world: atmosphere, furniture, cards, marquee
    ========================================================================= */
 @layer components {
   /* ---------- motion keyframes ----------
@@ -930,7 +930,7 @@
 }
 
 /* =========================================================================
-   UTILITIES — layout tokens reused across the page
+   UTILITIES - layout tokens reused across the page
    ========================================================================= */
 @layer utilities {
   :root {

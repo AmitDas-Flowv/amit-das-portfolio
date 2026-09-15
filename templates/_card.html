@@ -1,4 +1,4 @@
-{# Work card inner content — shared by index.html and section.html #}
+{# Work card inner content - shared by index.html and section.html #}
 {% macro card_inner(w) %}
   <div class="card-media">
     {% if w.thumb_src %}
@@ -21,7 +21,7 @@
   </div>
 {% endmacro %}
 
-{# One work grid — used inside a category section on either page #}
+{# One work grid - used inside a category section on either page #}
 {% macro work_grid(pieces) %}
   <div class="grid-work">
     {% for w in pieces %}

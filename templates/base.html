@@ -32,7 +32,7 @@
 </footer>
 
 <script>
-  // Thumbnail fallback: YouTube maxres 404s on some videos — retry hqdefault,
+  // Thumbnail fallback: YouTube maxres 404s on some videos - retry hqdefault,
   // then hide the <img> so the card's graded gradient shows through.
   function thumbFallback(img){
     if(img.dataset.yt && !img.dataset.tried){
@@ -103,7 +103,7 @@
     }catch(e){}
   }
 
-  // Work filter bar + shareable deep-links (#fashion or ?focus=ai) — home only
+  // Work filter bar + shareable deep-links (#fashion or ?focus=ai) - home only
   (function(){
     var bar = document.getElementById('filter-bar');
     if(!bar) return;
