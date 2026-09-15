@@ -265,6 +265,7 @@ WORK = [
         "title": "Yamaha Music — CFX", "role": "Director",
         "client": "Yamaha Music · Canopy Media", "year": "2026",
         "meta": "Lead director credit — concert-grand performance film.",
+        "href": "https://www.youtube.com/watch?v=4ivn9xaNn3w", "feature": True,
     },
     {
         "slug": "soi", "primary": "music", "tags": ["music", "live"],
@@ -272,6 +273,7 @@ WORK = [
         "client": "NCPA · SOI", "year": "2025–26",
         "meta": "Directed two seasons of India’s national orchestra live from "
         "a six-camera PCR — calling cuts in real time.",
+        "href": "https://www.instagram.com/symphonyorchestra_india/reels/",
     },
 
     # ---- Brands & OTT ----
@@ -440,10 +442,32 @@ WORK = [
         "href": "https://www.instagram.com/tv/CgJZqERq7by/",
     },
     {
-        "slug": "faasos", "primary": "food", "tags": ["food"],
-        "title": "Faasos — Pizza Wraps Launch", "role": "Production · Food Films",
+        "slug": "faasos-pizza-wrap", "primary": "food", "tags": ["food"],
+        "title": "Faasos — Pizza Wrap Film", "role": "Production · Food Films",
         "client": "Rebel Foods", "year": "2025",
-        "meta": "New-product launch films for the QSR brand.",
+        "meta": "New-product launch film for the QSR brand.",
+        "href": "https://youtu.be/2bxD8jTEBqc", "feature": True,
+    },
+    {
+        "slug": "faasos-wrap", "primary": "food", "tags": ["food"],
+        "title": "Faasos — Wrap Film", "role": "Production · Food Films",
+        "client": "Rebel Foods", "year": "2025",
+        "meta": "Signature-wrap product film.",
+        "href": "https://youtu.be/n_mlI95xFyI",
+    },
+    {
+        "slug": "faasos-curfew", "primary": "food", "tags": ["food"],
+        "title": "Faasos — Curfew Film", "role": "Production · Food Films",
+        "client": "Rebel Foods", "year": "2025",
+        "meta": "Campaign film for the QSR brand.",
+        "href": "https://youtu.be/QLVCaKfDTV8",
+    },
+    {
+        "slug": "faasos-table-tennis", "primary": "food", "tags": ["food"],
+        "title": "Faasos — Table Tennis Film", "role": "Production · Food Films",
+        "client": "Rebel Foods", "year": "2025",
+        "meta": "Concept campaign film for the QSR brand.",
+        "href": "https://youtu.be/lJD21QcRXkU",
     },
     {
         "slug": "oven-story", "primary": "food", "tags": ["food"],
