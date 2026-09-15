@@ -524,6 +524,19 @@
       gap: clamp(28px, 5vh, 40px);
     }
   }
+  .archive-link {
+    @apply inline-flex items-center font-mono text-step--1 uppercase text-paper-dim;
+    letter-spacing: 0.14em;
+    gap: 8px;
+    margin-top: clamp(20px, 3vh, 30px);
+    padding-bottom: 3px;
+    border-bottom: 1px solid theme("colors.hair.DEFAULT");
+    transition: color 0.25s ease, border-color 0.25s ease;
+  }
+  .archive-link:hover {
+    @apply text-gold-lift;
+    border-color: theme("colors.gold.DEFAULT");
+  }
   .work-index-label {
     @apply font-mono text-step--1 uppercase text-gold;
     letter-spacing: 0.2em;

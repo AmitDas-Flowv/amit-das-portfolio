@@ -20,6 +20,7 @@ SITE = {
     "location": "Mumbai, India",
     "current": "AI Director · T-Series",
     "email": "amit.d070@gmail.com",
+    "archive_url": "https://amitdasvideography.myportfolio.com/",
     "meta_description": (
         "Amit Das — AI Director & Creative Director. Luxury, jewellery and "
         "fashion, grounded in thirteen years of filmmaking, cinematography "
@@ -216,6 +217,13 @@ WORK = [
         "href": "https://www.instagram.com/reel/CqBFvsWDr-g/",
     },
     {
+        "slug": "hemant-trivedi", "primary": "fashion", "tags": ["fashion"],
+        "title": "Hemant Trivedi — Fashion", "role": "Cinematography",
+        "client": "Hemant Trivedi", "year": "",
+        "meta": "Fashion film for the veteran couturier.",
+        "href": "https://www.instagram.com/p/CQlq7zxl88T/",
+    },
+    {
         "slug": "mercury-ring", "primary": "fashion", "tags": ["fashion", "design"],
         "title": "Mercury Ring", "role": "Graphic Designer",
         "client": "Mercury Ring · USA", "year": "2024",
@@ -244,6 +252,13 @@ WORK = [
         "role": "Cinematography", "client": "2XSideB", "year": "",
         "meta": "Music visualiser for the 2XSideB release.",
         "href": "https://youtu.be/qJXqMFABwBE",
+    },
+    {
+        "slug": "hungama-maroon5", "primary": "music", "tags": ["music", "live"],
+        "title": "Honor Live & Loud — Maroon 5", "role": "Cinematography",
+        "client": "Hungama", "year": "",
+        "meta": "Live concert film — shot in Singapore and India.",
+        "href": "https://youtu.be/zGdVaKEqDtQ",
     },
     {
         "slug": "yamaha-cfx", "primary": "music", "tags": ["music"],
@@ -289,17 +304,53 @@ WORK = [
         "href": "https://youtu.be/mNY8RD2xAxo",
     },
     {
-        "slug": "netflix-royals", "primary": "brands", "tags": ["brands"],
-        "title": "Netflix — The Royals", "role": "Cinematography · Edit",
-        "client": "Netflix · Canopy Media", "year": "2025",
-        "meta": "Cinematography and edit for the Netflix title campaign.",
-    },
-    {
         "slug": "dell-futurist", "primary": "brands", "tags": ["brands"],
         "title": "Dell — Futurist", "role": "Cinematography", "client": "Dell",
         "year": "",
         "meta": "On-location sound-studio commercial.",
         "href": "https://www.youtube.com/watch?v=0aA_OYV4GAI",
+    },
+    {
+        "slug": "letters-to-netflix", "primary": "brands", "tags": ["brands"],
+        "title": "Letters to Netflix", "role": "Cinematography",
+        "client": "Netflix", "year": "",
+        "meta": "Netflix social campaign film.",
+        "href": "https://www.instagram.com/tv/CKdTxpUoTyH/",
+    },
+    {
+        "slug": "netflix-mumbai-mask", "primary": "brands", "tags": ["brands"],
+        "title": "Netflix — Money Heist · City Mask", "role": "Cinematography",
+        "client": "Netflix", "year": "",
+        "meta": "Money Heist campaign — Mumbai city film.",
+        "href": "https://www.instagram.com/tv/CUCCMYMKvHK/",
+    },
+    {
+        "slug": "netflix-mom-bff", "primary": "brands", "tags": ["brands"],
+        "title": "Netflix — Mom vs BFF", "role": "Director of Photography",
+        "client": "Netflix", "year": "",
+        "meta": "Social campaign film for the platform.",
+        "href": "https://www.youtube.com/watch?v=CKFoO7EgMw4",
+    },
+    {
+        "slug": "netflix-singles-day", "primary": "brands", "tags": ["brands"],
+        "title": "Netflix — Singles Day", "role": "Cinematography",
+        "client": "Netflix", "year": "",
+        "meta": "Singles-day social film.",
+        "href": "https://youtu.be/kpaw7bcNVp0",
+    },
+    {
+        "slug": "whats-on-netflix", "primary": "brands", "tags": ["brands"],
+        "title": "What's on Netflix", "role": "Cinematographer · Vox-pop",
+        "client": "Netflix", "year": "",
+        "meta": "Shot the vox-pop segments across the series.",
+        "href": "https://www.youtube.com/watch?v=8GrNoVevMNI&list=PLkF7RYTIPWdfHMCkbVhz4mZw37U_99-jk",
+    },
+    {
+        "slug": "gillette-venus", "primary": "brands", "tags": ["brands"],
+        "title": "Gillette Venus", "role": "Filming Professional",
+        "client": "Gillette Venus · Pocket Aces", "year": "2021",
+        "meta": "Beauty-brand social film.",
+        "href": "https://youtu.be/fKHMs_lsytc",
     },
     {
         "slug": "zingbus", "primary": "brands", "tags": ["brands"],
@@ -314,6 +365,12 @@ WORK = [
         "client": "Groww", "year": "",
         "meta": "Digital studio-setup films.",
         "href": "https://www.youtube.com/watch?v=T8X84rLyXss",
+    },
+    {
+        "slug": "netflix-royals", "primary": "brands", "tags": ["brands"],
+        "title": "Netflix — The Royals", "role": "Cinematography · Edit",
+        "client": "Netflix · Canopy Media", "year": "2025",
+        "meta": "Cinematography and edit for the Netflix title campaign.",
     },
 
     # ---- Automotive & Travel ----
@@ -330,6 +387,34 @@ WORK = [
         "client": "MG", "year": "",
         "meta": "Mumbai to Delhi road film.",
         "href": "https://www.youtube.com/watch?v=vv6BsobrThk",
+    },
+    {
+        "slug": "jk-tyre-trackstar", "primary": "auto", "tags": ["auto", "live"],
+        "title": "JK Tyre — MTV Trackstar", "role": "Assistant Director · Camera · Edit",
+        "client": "JK Tyre · MTV", "year": "",
+        "meta": "Long-form motorsport reality series — eleven episodes on the road.",
+        "href": "https://www.youtube.com/playlist?list=PL0TdAxSg6OewVEQHg2bK7x0Wphj4Hi-Es",
+    },
+    {
+        "slug": "land-rover", "primary": "auto", "tags": ["auto"],
+        "title": "Land Rover — Discovery Sport", "role": "Cinematography",
+        "client": "Land Rover", "year": "2020",
+        "meta": "Shot the Discovery Sport launch film.",
+        "href": "https://www.instagram.com/p/B8lFOoBhPqX/",
+    },
+    {
+        "slug": "re-kenny", "primary": "auto", "tags": ["auto"],
+        "title": "Royal Enfield — Kenny", "role": "2nd Camera · Drone",
+        "client": "Royal Enfield", "year": "",
+        "meta": "Motorcycle road film — camera and drone.",
+        "href": "https://www.youtube.com/watch?v=IxvAkzVlMh4",
+    },
+    {
+        "slug": "spiti-valley", "primary": "auto", "tags": ["auto"],
+        "title": "Spiti Valley", "role": "Cinematography · Edit",
+        "client": "Independent", "year": "",
+        "meta": "Shot and cut a Himalayan travelogue series.",
+        "href": "https://www.youtube.com/playlist?list=PL254tQxhqsjadYZnURKTqeYNGEtRvDMmI",
     },
     {
         "slug": "agoda", "primary": "auto", "tags": ["auto"],
@@ -365,6 +450,7 @@ WORK = [
         "title": "Oven Story", "role": "Videography · Photography",
         "client": "Rebel Foods", "year": "2025",
         "meta": "Menu and product marketing content.",
+        "href": "https://www.instagram.com/tv/CXKya6MJevW/",
     },
 
     # ---- Live & Sport ----
@@ -382,6 +468,14 @@ WORK = [
         "client": "Reliance Media · London", "year": "2019",
         "meta": "Three-month campaign contract on the <i>83</i> release, on "
         "location in London.",
+        "href": "https://instagram.com/83thefilm",
+    },
+    {
+        "slug": "redbull-bcone", "primary": "live", "tags": ["live"],
+        "title": "Red Bull — BC One", "role": "Cinematography",
+        "client": "Red Bull", "year": "",
+        "meta": "Event film for the global breaking championship.",
+        "href": "https://youtu.be/uY2r-1VWwGk",
     },
     {
         "slug": "football", "primary": "live", "tags": ["live"],
