@@ -200,17 +200,13 @@ WORK = [
     },
 
     # ---- Fashion, Luxury & Jewellery ----
+    # Linked pieces first; credit-only work below.
     {
-        "slug": "nippon-lookbook", "primary": "fashion", "tags": ["fashion"],
-        "title": "Nippon Jewellery — Lookbook", "role": "Cinematographer",
-        "client": "Abeat Films", "year": "2025",
-        "meta": "Jewellery lookbook film — shot on equipment, graded for the house.",
-    },
-    {
-        "slug": "arpita-mehta", "primary": "fashion", "tags": ["fashion"],
-        "title": "JM × Arpita Mehta", "role": "Director of Photography · Edit",
-        "client": "Arpita Mehta", "year": "2025",
-        "meta": "Designer fashion film — shot and cut end to end.",
+        "slug": "amit-aggarwal", "primary": "fashion", "tags": ["fashion"],
+        "title": "Amit Aggarwal — Fashion Film", "role": "Cinematography",
+        "client": "Amit Aggarwal", "year": "2023",
+        "meta": "Couture fashion film for the Indian designer.",
+        "href": "https://www.instagram.com/reel/Cn51GuGgvqS/",
     },
     {
         "slug": "lakme", "primary": "fashion", "tags": ["fashion"],
@@ -218,13 +214,6 @@ WORK = [
         "client": "Lakmé Fashion", "year": "2023",
         "meta": "Studio fashion films for the beauty house.",
         "href": "https://www.instagram.com/reel/CqBFvsWDr-g/",
-    },
-    {
-        "slug": "amit-aggarwal", "primary": "fashion", "tags": ["fashion"],
-        "title": "Amit Aggarwal — Fashion Film", "role": "Cinematography",
-        "client": "Amit Aggarwal", "year": "2023",
-        "meta": "Couture fashion film for the Indian designer.",
-        "href": "https://www.instagram.com/reel/Cn51GuGgvqS/",
     },
     {
         "slug": "mercury-ring", "primary": "fashion", "tags": ["fashion", "design"],
@@ -279,11 +268,25 @@ WORK = [
         "href": "https://youtu.be/Nf8H6MNKMYE",
     },
     {
+        "slug": "netflix-govt", "primary": "brands", "tags": ["brands"],
+        "title": "Netflix × Govt. of India", "role": "Director of Photography",
+        "client": "Netflix", "year": "",
+        "meta": "Outdoor campaign film from a seven-film series.",
+        "href": "https://youtu.be/kBD2Dfr4rek",
+    },
+    {
         "slug": "buzzfeed", "primary": "brands", "tags": ["brands"],
         "title": "BuzzFeed India", "role": "Director of Photography",
         "client": "BuzzFeed India", "year": "",
         "meta": "<i>If Opinions Were Sold Like Clothes</i> — shot on location.",
         "href": "https://youtu.be/8sdRN6aMmwM",
+    },
+    {
+        "slug": "godaddy", "primary": "brands", "tags": ["brands"],
+        "title": "GoDaddy", "role": "Cinematography", "client": "GoDaddy",
+        "year": "",
+        "meta": "Green-screen digital commercial.",
+        "href": "https://youtu.be/mNY8RD2xAxo",
     },
     {
         "slug": "netflix-royals", "primary": "brands", "tags": ["brands"],
@@ -297,20 +300,6 @@ WORK = [
         "year": "",
         "meta": "On-location sound-studio commercial.",
         "href": "https://www.youtube.com/watch?v=0aA_OYV4GAI",
-    },
-    {
-        "slug": "godaddy", "primary": "brands", "tags": ["brands"],
-        "title": "GoDaddy", "role": "Cinematography", "client": "GoDaddy",
-        "year": "",
-        "meta": "Green-screen digital commercial.",
-        "href": "https://youtu.be/mNY8RD2xAxo",
-    },
-    {
-        "slug": "netflix-govt", "primary": "brands", "tags": ["brands"],
-        "title": "Netflix × Govt. of India", "role": "Director of Photography",
-        "client": "Netflix", "year": "",
-        "meta": "Outdoor campaign film from a seven-film series.",
-        "href": "https://youtu.be/kBD2Dfr4rek",
     },
     {
         "slug": "zingbus", "primary": "brands", "tags": ["brands"],
@@ -359,6 +348,13 @@ WORK = [
         "href": "https://www.instagram.com/reel/Co7Y_pZoDUH/",
     },
     {
+        "slug": "eu-food-show", "primary": "food", "tags": ["food"],
+        "title": "European Union — Food Show", "role": "Cinematography",
+        "client": "European Union", "year": "",
+        "meta": "Food show and recipe films.",
+        "href": "https://www.instagram.com/tv/CgJZqERq7by/",
+    },
+    {
         "slug": "faasos", "primary": "food", "tags": ["food"],
         "title": "Faasos — Pizza Wraps Launch", "role": "Production · Food Films",
         "client": "Rebel Foods", "year": "2025",
@@ -369,13 +365,6 @@ WORK = [
         "title": "Oven Story", "role": "Videography · Photography",
         "client": "Rebel Foods", "year": "2025",
         "meta": "Menu and product marketing content.",
-    },
-    {
-        "slug": "eu-food-show", "primary": "food", "tags": ["food"],
-        "title": "European Union — Food Show", "role": "Cinematography",
-        "client": "European Union", "year": "",
-        "meta": "Food show and recipe films.",
-        "href": "https://www.instagram.com/tv/CgJZqERq7by/",
     },
 
     # ---- Live & Sport ----
@@ -393,12 +382,6 @@ WORK = [
         "client": "Reliance Media · London", "year": "2019",
         "meta": "Three-month campaign contract on the <i>83</i> release, on "
         "location in London.",
-    },
-    {
-        "slug": "booyah", "primary": "live", "tags": ["live"],
-        "title": "Garena — Booyah Awards", "role": "Camera Operator",
-        "client": "OML Studios · Garena", "year": "2026",
-        "meta": "Live esports awards multi-camera coverage.",
     },
     {
         "slug": "football", "primary": "live", "tags": ["live"],
@@ -511,8 +494,7 @@ CLIENTS = [
 # --- Contact socials ------------------------------------------------------
 
 SOCIALS = [
-    {"label": "Instagram", "href": "https://instagram.com/amitda5"},
-    {"label": "FLOWV", "href": "https://www.instagram.com/flowvvvvv"},
+    {"label": "Instagram · FLOWV", "href": "https://www.instagram.com/flowvvvvv"},
     {"label": "Portfolio", "href": "https://amitdasvideography.myportfolio.com/"},
     {
         "label": "Behance",

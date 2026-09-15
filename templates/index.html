@@ -48,17 +48,23 @@
   </div>
 </section>
 
-<!-- ============ WORK — intro + filter bar ============ -->
+<!-- ============ WORK — intro + filter menu ============ -->
 <section class="section-block wrap" id="work">
-  <div class="cue reveal"><span class="n">00:02</span> — Selected Work · By Discipline</div>
-  <h2 class="section-head reveal" style="max-width:18ch">One body of work, many rooms.</h2>
-  <p class="lede reveal" style="margin-bottom:clamp(28px,4vh,44px)">From end-to-end AI films to luxury fashion, music, brand campaigns, travel, food and live direction — filter to the work that fits the brief, or open any discipline as its own shareable page.</p>
-
-  <div class="filter-bar reveal" id="filter-bar" role="tablist" aria-label="Filter work by discipline">
-    <button class="chip active" data-filter="all" type="button">All</button>
-    {% for cat in CATEGORIES %}
-    <button class="chip" data-filter="{{ cat.slug }}" type="button">{{ cat.label }}</button>
-    {% endfor %}
+  <div class="work-intro">
+    <div class="work-intro-lead reveal">
+      <div class="cue"><span class="n">00:02</span> — Selected Work · By Discipline</div>
+      <h2 class="section-head" style="max-width:14ch; margin-bottom:0.34em">One body of work, many rooms.</h2>
+      <p class="lede">From end-to-end AI films to luxury fashion, music, brand campaigns, travel, food and live direction — filter to the work that fits the brief, or open any discipline as its own shareable page.</p>
+    </div>
+    <div class="work-index reveal">
+      <div class="work-index-label">Filter by discipline</div>
+      <div class="filter-bar filter-menu" id="filter-bar" role="tablist" aria-label="Filter work by discipline">
+        <button class="chip active" data-filter="all" type="button"><span>All work</span><span class="chip-mark" aria-hidden="true">●</span></button>
+        {% for cat in CATEGORIES %}
+        <button class="chip" data-filter="{{ cat.slug }}" type="button"><span>{{ cat.label }}</span><span class="chip-mark" aria-hidden="true">●</span></button>
+        {% endfor %}
+      </div>
+    </div>
   </div>
 </section>
 
