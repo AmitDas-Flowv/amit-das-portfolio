@@ -3,7 +3,7 @@
 All page copy lives here as plain Python data so the Jinja2 templates stay
 loop-driven and the site is edited by touching this one file. Strings that
 carry inline emphasis (``<b>`` / ``<i>``) are marked with ``markup=True`` and
-rendered with the ``| safe`` filter in the template — everything else is
+rendered with the ``| safe`` filter in the template - everything else is
 auto-escaped by Jinja.
 """
 
@@ -22,15 +22,15 @@ SITE = {
     "email": "amit.d070@gmail.com",
     "archive_url": "https://amitdasvideography.myportfolio.com/",
     "meta_description": (
-        "Amit Das — AI Director & Creative Director. Luxury, jewellery and "
-        "fashion, grounded in thirteen years of filmmaking, cinematography "
+        "Amit Das, AI Director and Creative Director. Luxury, jewellery and "
+        "fashion work, built on thirteen years of filmmaking, cinematography "
         "and direction."
     ),
     "hero_sub": (
-        "Where a thirteen-year foundation in <b>filmmaking, cinematography and "
-        "post</b> meets <b>generative AI</b> — building the systems that turn "
-        "craft into <b>premium content at scale</b>. A luxury, jewellery and "
-        "fashion sensibility, from the first idea to the final cut."
+        "Thirteen years in <b>filmmaking, cinematography and "
+        "post</b>, now building with <b>generative AI</b>. High-end content, and "
+        "the systems that produce it, with a luxury, jewellery and "
+        "fashion eye."
     ),
     "copyright": "Amit Das © 2026",
     "footer_role": "AI Director · Mumbai",
@@ -59,8 +59,8 @@ STATS = [
 INTRO = {
     "head": "From the camera<br>to the system.",
     "lede": (
-        "A filmmaker who learned the frame the long way — now directing the "
-        "systems that make content at scale."
+        "A filmmaker who learned the craft the long way, now directing the "
+        "systems that make the work, not just the shots."
     ),
     "body": [
         "Amit Das is a Mumbai-based <b>AI Director and creative director</b> "
@@ -68,9 +68,9 @@ INTRO = {
         "the generative model.",
         "He began in post and agency video at <b>The Glitch</b> and <b>Concept "
         "Productions</b>, moved into artist and content management at <b>OML</b>, "
-        "then spent five-plus years as an independent cinematographer and DOP — "
+        "then spent five-plus years as an independent cinematographer and DOP, "
         "over a hundred branded films, OTT campaigns, episodic shows, music and "
-        "fashion films, automotive and travel pieces, and social-first work for "
+        "fashion films, automotive and travel pieces, and social work for "
         "<b>Netflix, Meta, Dell, Mahindra, Lakmé, Gillette, Agoda</b> and many "
         "more.",
         "He traveled to London on the <b>marketing campaign for <i>83</i></b>, "
@@ -78,15 +78,14 @@ INTRO = {
         "seasons of the <b>NCPA Symphony Orchestra of India</b> live from a "
         "six-camera PCR, and designed jewellery and product creatives for U.S. "
         "house <b>Mercury Ring</b>.",
-        "Today, as <b>AI Director at T-Series</b>, he builds end-to-end — "
-        "generation, direction and edit — bringing that production foundation "
-        "into AI-led creative direction with a luxury focus.",
-        "The real shift is in <b>how</b> he works: thinking in systems rather "
-        "than single shots, and pairing deep production and marketing experience "
-        "with generative pipelines to <b>design, direct and deliver premium "
-        "content at a scale</b> that wasn’t possible before. The craft stays — "
-        "the output multiplies. It’s the move from making one film at a time to "
-        "<b>leading the system that makes many</b>.",
+        "Today, as <b>AI Director at T-Series</b>, he handles the films end to "
+        "end, from generation to direction to edit, bringing that production "
+        "background into AI-led creative direction with a luxury focus.",
+        "What has really changed is <b>how</b> he works: thinking in systems "
+        "instead of single shots, and pairing years of production and "
+        "marketing experience with generative pipelines. <b>The craft is "
+        "the same.</b> The difference is that one person can now make a "
+        "lot more of it.",
     ],
 }
 
@@ -94,7 +93,7 @@ INTRO = {
 #
 # Each WORK item declares a `primary` vertical (the section it lives in) and a
 # list of `tags` (all the facets it belongs to). The filter bar is built from
-# CATEGORIES, and a chip cross-filters every section at once — so Amit can open
+# CATEGORIES, and a chip cross-filters every section at once - so Amit can open
 # (or deep-link) the site to a specific client type. `slug` is the stable id
 # used to auto-resolve an uploaded still at static/img/work/<slug>.(jpg|webp|png).
 
@@ -102,21 +101,21 @@ CATEGORIES = [
     {
         "slug": "ai",
         "label": "AI & Generative",
-        "blurb": "End-to-end AI films — generation, direction and edit, owned "
-        "from first frame to final cut. Built for brands scaling premium "
-        "content with generative pipelines.",
+        "blurb": "AI films made end to end: generation, direction and edit, "
+        "kept in-house. Built for brands that want to produce more with "
+        "generative pipelines.",
     },
     {
         "slug": "brands",
         "label": "Brands & OTT",
         "blurb": "Campaign films and digital commercials for global brands and "
-        "streaming platforms — from concept to delivery.",
+        "streaming platforms, from concept to delivery.",
     },
     {
         "slug": "music",
         "label": "Music & Performance",
         "blurb": "Music videos and visualisers, plus broadcast-grade live "
-        "direction — including six-camera orchestral PCR calling.",
+        "direction, including six-camera orchestral PCR calling.",
     },
     {
         "slug": "auto",
@@ -127,14 +126,14 @@ CATEGORIES = [
     {
         "slug": "fashion",
         "label": "Fashion, Luxury & Jewellery",
-        "blurb": "A luxury sensibility across jewellery, fashion and beauty — "
+        "blurb": "A luxury sensibility across jewellery, fashion and beauty: "
         "studio fashion films, lookbooks and product-led design.",
     },
     {
         "slug": "food",
         "label": "Food & Hospitality",
-        "blurb": "Premium restaurant, product and menu-launch content — appetite "
-        "on demand, at social speed.",
+        "blurb": "Premium restaurant, product and menu-launch content, made "
+        "for social feeds.",
     },
     {
         "slug": "live",
@@ -148,17 +147,17 @@ WORK = [
     # ---- AI & Generative (T-Series) ----
     {
         "slug": "amrit-barbarik", "primary": "ai", "tags": ["ai"],
-        "title": "Amrit Gaathayein — Barbarik", "role": "AI Director",
+        "title": "Amrit Gaathayein: Barbarik", "role": "AI Director",
         "client": "T-Series", "year": "2026",
-        "meta": "Barbarik could have ended the Mahabharat war in a minute — so "
+        "meta": "Barbarik could have ended the Mahabharat war in a minute. So "
         "why did Krishna stop him?",
         "href": "https://youtu.be/vb9YkbRR2A4",
     },
     {
         "slug": "amrit-padmanabhaswamy", "primary": "ai", "tags": ["ai"],
-        "title": "Amrit Gaathayein — Padmanabhaswamy", "role": "AI Director",
+        "title": "Amrit Gaathayein: Padmanabhaswamy", "role": "AI Director",
         "client": "T-Series", "year": "2026",
-        "meta": "Why were Shri Padmanabhaswamy Mandir’s last two vaults never "
+        "meta": "Why were Shri Padmanabhaswamy Mandir's last two vaults never "
         "opened?",
         "href": "https://youtu.be/90an5w1cueA",
     },
@@ -166,75 +165,66 @@ WORK = [
         "slug": "dhamal", "primary": "ai", "tags": ["ai", "music"],
         "title": "Dhamal", "role": "AI Director",
         "client": "T-Series", "year": "2026",
-        "meta": "End-to-end AI music video — generation, direction and edit, "
-        "first frame to final cut.",
+        "meta": "An AI music video made entirely in-house, from generation to "
+        "edit.",
         "href": "https://www.youtube.com/watch?v=U6kMnUTqaeQ", "feature": True,
     },
     {
         "slug": "selfmade", "primary": "ai", "tags": ["ai", "music"],
         "title": "Selfmade", "role": "AI Director",
         "client": "T-Series", "year": "2026",
-        "meta": "A fully AI-generated music film — directed and cut in-house.",
+        "meta": "A fully AI-generated music film, directed and cut in-house.",
         "href": "https://youtu.be/ZPQ_FViOwTY", "feature": True,
     },
     {
         "slug": "balle-balbiro", "primary": "ai", "tags": ["ai", "music"],
         "title": "Balle Balbiro Balle", "role": "AI Director",
         "client": "T-Series", "year": "2026",
-        "meta": "AI music video for Jasbir Jassi — generation, direction and "
-        "edit, first frame to final cut.",
+        "meta": "An AI music video for Jasbir Jassi, generated and cut in-house.",
         "href": "https://youtu.be/b07AnV4KvoQ", "feature": True,
     },
     {
         "slug": "amrit-kuber", "primary": "ai", "tags": ["ai"],
-        "title": "Amrit Gathaye — Dhandevta Kuber", "role": "AI Director",
+        "title": "Amrit Gaathayein: Dhandevta Kuber", "role": "AI Director",
         "client": "T-Series", "year": "2026",
-        "meta": "Mythology reimagined through generative image and video pipelines.",
+        "meta": "Mythology retold through generative image and video.",
         "href": "https://www.youtube.com/watch?v=OfO3CA9Yq3Y",
     },
     {
         "slug": "amrit-promo", "primary": "ai", "tags": ["ai"],
-        "title": "Amrit Gathaye — Promo", "role": "AI Director",
+        "title": "Amrit Gaathayein: Promo", "role": "AI Director",
         "client": "T-Series", "year": "2026",
-        "meta": "Campaign promo cut — pacing, grade and sound built for the feed.",
+        "meta": "Promo cut for the campaign, paced and graded for the feed.",
         "href": "https://youtu.be/aeL9m0AMjeM",
     },
 
     # ---- Fashion, Luxury & Jewellery ----
-    # Linked pieces first; credit-only work below.
     {
         "slug": "amit-aggarwal", "primary": "fashion", "tags": ["fashion"],
-        "title": "Amit Aggarwal — Fashion Film", "role": "Cinematography",
+        "title": "Amit Aggarwal Fashion Film", "role": "Cinematography",
         "client": "Amit Aggarwal", "year": "2023",
         "meta": "Couture fashion film for the Indian designer.",
         "href": "https://www.instagram.com/reel/Cn51GuGgvqS/",
     },
     {
         "slug": "lakme", "primary": "fashion", "tags": ["fashion"],
-        "title": "Lakmé — Fashion Films", "role": "Cinematography",
+        "title": "Lakmé Fashion Films", "role": "Cinematography",
         "client": "Lakmé Fashion", "year": "2023",
         "meta": "Studio fashion films for the beauty house.",
         "href": "https://www.instagram.com/reel/CqBFvsWDr-g/",
     },
     {
         "slug": "hemant-trivedi", "primary": "fashion", "tags": ["fashion"],
-        "title": "Hemant Trivedi — Fashion", "role": "Cinematography",
+        "title": "Hemant Trivedi Fashion", "role": "Cinematography",
         "client": "Hemant Trivedi", "year": "",
         "meta": "Fashion film for the veteran couturier.",
         "href": "https://www.instagram.com/p/CQlq7zxl88T/",
-    },
-    {
-        "slug": "mercury-ring", "primary": "fashion", "tags": ["fashion", "design"],
-        "title": "Mercury Ring", "role": "Graphic Designer",
-        "client": "Mercury Ring · USA", "year": "2024",
-        "meta": "Posters, invitations and jewellery-product creatives for the "
-        "U.S. lab-grown diamond house.",
     },
 
     # ---- Music & Performance ----
     {
         "slug": "bella-ciao", "primary": "music", "tags": ["music", "brands"],
-        "title": "Netflix — Money Heist · Bella Ciao",
+        "title": "Money Heist: Bella Ciao",
         "role": "Director of Photography", "client": "Netflix", "year": "2020",
         "meta": "Official India video for the Money Heist campaign.",
         "href": "https://www.youtube.com/watch?v=0TxfLdJ24VM", "feature": True,
@@ -243,45 +233,45 @@ WORK = [
         "slug": "boya", "primary": "music", "tags": ["music"],
         "title": "Boya", "role": "Director of Photography", "client": "Boya",
         "year": "",
-        "meta": "Music video, shot on location — beach.",
+        "meta": "Music video shot on location at the beach.",
         "href": "https://www.youtube.com/watch?v=3GDfcWQNbIY",
     },
     {
         "slug": "chalta-hai", "primary": "music", "tags": ["music"],
-        "title": "Chalta Hai — Shalmali Kholgade",
-        "role": "Cinematography", "client": "2XSideB", "year": "",
-        "meta": "Music visualiser for the 2XSideB release.",
+        "title": "Chalta Hai", "role": "Cinematography",
+        "client": "Shalmali Kholgade · 2XSideB", "year": "",
+        "meta": "Music visualiser for the Shalmali Kholgade release.",
         "href": "https://youtu.be/qJXqMFABwBE",
     },
     {
         "slug": "hungama-maroon5", "primary": "music", "tags": ["music", "live"],
-        "title": "Honor Live & Loud — Maroon 5", "role": "Cinematography",
+        "title": "Honor Live & Loud, Maroon 5", "role": "Cinematography",
         "client": "Hungama", "year": "",
-        "meta": "Live concert film — shot in Singapore and India.",
+        "meta": "Live concert film, shot in Singapore and India.",
         "href": "https://youtu.be/zGdVaKEqDtQ",
     },
     {
         "slug": "yamaha-cfx", "primary": "music", "tags": ["music"],
-        "title": "Yamaha Music — CFX", "role": "Director",
+        "title": "Yamaha Music CFX", "role": "Director",
         "client": "Yamaha Music · Canopy Media", "year": "2026",
-        "meta": "Lead director credit — concert-grand performance film.",
+        "meta": "Lead director on a concert-grand performance film.",
         "href": "https://www.youtube.com/watch?v=4ivn9xaNn3w", "feature": True,
     },
     {
         "slug": "soi", "primary": "music", "tags": ["music", "live"],
         "title": "Symphony Orchestra of India", "role": "Director · PCR, 6-camera",
         "client": "NCPA · SOI", "year": "2025–26",
-        "meta": "Directed two seasons of India’s national orchestra live from "
-        "a six-camera PCR — calling cuts in real time.",
+        "meta": "Directed two seasons of India's national orchestra live from a "
+        "six-camera PCR, calling cuts in real time.",
         "href": "https://www.instagram.com/symphonyorchestra_india/reels/",
     },
 
     # ---- Brands & OTT ----
     {
         "slug": "meta", "primary": "brands", "tags": ["brands"],
-        "title": "Meta — Campaign", "role": "Cinematography", "client": "Meta",
+        "title": "Meta Campaign", "role": "Cinematography", "client": "Meta",
         "year": "",
-        "meta": "Campaign film — digital commercial.",
+        "meta": "Digital commercial for the campaign.",
         "href": "https://youtu.be/Nf8H6MNKMYE",
     },
     {
@@ -295,7 +285,7 @@ WORK = [
         "slug": "buzzfeed", "primary": "brands", "tags": ["brands"],
         "title": "BuzzFeed India", "role": "Director of Photography",
         "client": "BuzzFeed India", "year": "",
-        "meta": "<i>If Opinions Were Sold Like Clothes</i> — shot on location.",
+        "meta": "<i>If Opinions Were Sold Like Clothes</i>, shot on location.",
         "href": "https://youtu.be/8sdRN6aMmwM",
     },
     {
@@ -307,35 +297,105 @@ WORK = [
     },
     {
         "slug": "dell-futurist", "primary": "brands", "tags": ["brands"],
-        "title": "Dell — Futurist", "role": "Cinematography", "client": "Dell",
+        "title": "Dell Futurist", "role": "Cinematography", "client": "Dell",
         "year": "",
         "meta": "On-location sound-studio commercial.",
         "href": "https://www.youtube.com/watch?v=0aA_OYV4GAI",
     },
     {
+        "slug": "jubilee", "primary": "brands", "tags": ["brands"],
+        "title": "Jubilee", "role": "Cinematography · Social",
+        "client": "Prime Video", "year": "2023",
+        "meta": "Promo content for the Prime Video period drama.",
+        "href": "https://www.instagram.com/reel/CqqIgIdBHku/",
+    },
+    {
+        "slug": "taaza-khabar", "primary": "brands", "tags": ["brands"],
+        "title": "Taaza Khabar", "role": "Promo · Cinematography",
+        "client": "Hotstar", "year": "2023",
+        "meta": "Social promo for the Hotstar series with Bhuvan Bam.",
+        "href": "https://www.instagram.com/reel/CmDpu_Wontg/",
+    },
+    {
+        "slug": "afsos", "primary": "brands", "tags": ["brands"],
+        "title": "Afsos Premiere", "role": "Event Videography",
+        "client": "Prime Video · OML", "year": "2020",
+        "meta": "Filmed the Mumbai launch for the OML series.",
+        "href": "https://www.youtube.com/watch?v=IjhPJm9aBrU",
+    },
+    {
+        "slug": "paisa-vasool", "primary": "brands", "tags": ["brands"],
+        "title": "The Paisa Vasool Show", "role": "Producer · Cinematography",
+        "client": "Viu Originals", "year": "",
+        "meta": "Produced and shot eleven episodes for Viu Originals.",
+        "href": "https://www.youtube.com/playlist?list=PLNoppEJMkKSrZ1Pmj3pZIUF-vZn0xaJi3",
+    },
+    {
+        "slug": "rex-talk", "primary": "brands", "tags": ["brands"],
+        "title": "MTV Rex Talk", "role": "Team Producer · DOP",
+        "client": "MTV · Durex", "year": "",
+        "meta": "Fourteen episodes of branded entertainment for MTV.",
+        "href": "https://www.youtube.com/playlist?list=PLR-SQWFj8UefEKrRyyWbFWg3hAM1kT3o0",
+    },
+    {
+        "slug": "mind-your-business", "primary": "brands", "tags": ["brands"],
+        "title": "Mind Your Business", "role": "Cinematography · Green Screen",
+        "client": "Amazon", "year": "2022",
+        "meta": "Green-screen founder films for the Great Indian Festival.",
+        "href": "https://www.instagram.com/reel/CjA2y2zKT8A/",
+    },
+    {
+        "slug": "selfie-challenge", "primary": "brands", "tags": ["brands"],
+        "title": "MTV Great Selfie Challenge", "role": "Team Producer · DOP",
+        "client": "MTV", "year": "",
+        "meta": "Filmed a travel series across India, seven episodes.",
+        "href": "https://www.youtube.com/playlist?list=PL0TdAxSg6OewhnNp4yIgUA9oJnMeODwU2",
+    },
+    {
+        "slug": "bachke-rehna", "primary": "brands", "tags": ["brands"],
+        "title": "Bachke Rehna Re Baba", "role": "Cinematography · Social",
+        "client": "Netflix", "year": "",
+        "meta": "Social campaign film for the Netflix India release.",
+        "href": "https://youtu.be/z2y48uist-o",
+    },
+    {
+        "slug": "colors-tv", "primary": "brands", "tags": ["brands"],
+        "title": "Colors TV Films", "role": "Cinematography",
+        "client": "Colors TV", "year": "2023",
+        "meta": "Three short promotional documentaries.",
+        "href": "https://www.instagram.com/reel/CuzFdqmtllH/",
+    },
+    {
+        "slug": "bholaa", "primary": "brands", "tags": ["brands"],
+        "title": "Bholaa", "role": "Promo · Cinematography",
+        "client": "T-Series", "year": "2023",
+        "meta": "Social films for the theatrical and music release.",
+        "href": "https://www.instagram.com/reel/CozD7HmDUtt/",
+    },
+    {
         "slug": "letters-to-netflix", "primary": "brands", "tags": ["brands"],
         "title": "Letters to Netflix", "role": "Cinematography",
         "client": "Netflix", "year": "",
-        "meta": "Netflix social campaign film.",
+        "meta": "Social campaign film for Netflix India.",
         "href": "https://www.instagram.com/tv/CKdTxpUoTyH/",
     },
     {
         "slug": "netflix-mumbai-mask", "primary": "brands", "tags": ["brands"],
-        "title": "Netflix — Money Heist · City Mask", "role": "Cinematography",
+        "title": "Money Heist: City Mask", "role": "Cinematography",
         "client": "Netflix", "year": "",
-        "meta": "Money Heist campaign — Mumbai city film.",
+        "meta": "Mumbai city film for the Money Heist campaign.",
         "href": "https://www.instagram.com/tv/CUCCMYMKvHK/",
     },
     {
         "slug": "netflix-mom-bff", "primary": "brands", "tags": ["brands"],
-        "title": "Netflix — Mom vs BFF", "role": "Director of Photography",
+        "title": "Netflix: Mom vs BFF", "role": "Director of Photography",
         "client": "Netflix", "year": "",
         "meta": "Social campaign film for the platform.",
         "href": "https://www.youtube.com/watch?v=CKFoO7EgMw4",
     },
     {
         "slug": "netflix-singles-day", "primary": "brands", "tags": ["brands"],
-        "title": "Netflix — Singles Day", "role": "Cinematography",
+        "title": "Netflix: Singles Day", "role": "Cinematography",
         "client": "Netflix", "year": "",
         "meta": "Singles-day social film.",
         "href": "https://youtu.be/kpaw7bcNVp0",
@@ -356,31 +416,25 @@ WORK = [
     },
     {
         "slug": "zingbus", "primary": "brands", "tags": ["brands"],
-        "title": "Zingbus — TVC", "role": "Cinematography", "client": "Zingbus",
+        "title": "Zingbus TVC", "role": "Cinematography", "client": "Zingbus",
         "year": "",
         "meta": "Studio TVC.",
         "href": "https://youtu.be/b8k1QdpL2SQ",
     },
     {
         "slug": "groww", "primary": "brands", "tags": ["brands"],
-        "title": "Groww — Digital Studio", "role": "Cinematography",
+        "title": "Groww Digital Studio", "role": "Cinematography",
         "client": "Groww", "year": "",
         "meta": "Digital studio-setup films.",
         "href": "https://www.youtube.com/watch?v=T8X84rLyXss",
-    },
-    {
-        "slug": "netflix-royals", "primary": "brands", "tags": ["brands"],
-        "title": "Netflix — The Royals", "role": "Cinematography · Edit",
-        "client": "Netflix · Canopy Media", "year": "2025",
-        "meta": "Cinematography and edit for the Netflix title campaign.",
     },
 
     # ---- Automotive & Travel ----
     {
         "slug": "mahindra-mojo", "primary": "auto", "tags": ["auto"],
-        "title": "Mahindra Mojo — The Mountain Trail",
+        "title": "Mahindra Mojo: The Mountain Trail",
         "role": "Director of Photography", "client": "Mahindra", "year": "",
-        "meta": "Chandigarh to Leh — a long-form expedition film.",
+        "meta": "A long-form expedition film from Chandigarh to Leh.",
         "href": "https://www.youtube.com/watch?v=HVCBrHU4ANQ", "feature": True,
     },
     {
@@ -392,23 +446,25 @@ WORK = [
     },
     {
         "slug": "jk-tyre-trackstar", "primary": "auto", "tags": ["auto", "live"],
-        "title": "JK Tyre — MTV Trackstar", "role": "Assistant Director · Camera · Edit",
+        "title": "JK Tyre: MTV Trackstar",
+        "role": "Assistant Director · Camera · Edit",
         "client": "JK Tyre · MTV", "year": "",
-        "meta": "Long-form motorsport reality series — eleven episodes on the road.",
+        "meta": "A long-form motorsport reality series, eleven episodes on the "
+        "road.",
         "href": "https://www.youtube.com/playlist?list=PL0TdAxSg6OewVEQHg2bK7x0Wphj4Hi-Es",
     },
     {
         "slug": "land-rover", "primary": "auto", "tags": ["auto"],
-        "title": "Land Rover — Discovery Sport", "role": "Cinematography",
+        "title": "Land Rover Discovery Sport", "role": "Cinematography",
         "client": "Land Rover", "year": "2020",
-        "meta": "Shot the Discovery Sport launch film.",
+        "meta": "Shot the launch film.",
         "href": "https://www.instagram.com/p/B8lFOoBhPqX/",
     },
     {
         "slug": "re-kenny", "primary": "auto", "tags": ["auto"],
-        "title": "Royal Enfield — Kenny", "role": "2nd Camera · Drone",
+        "title": "Royal Enfield Kenny", "role": "2nd Camera · Drone",
         "client": "Royal Enfield", "year": "",
-        "meta": "Motorcycle road film — camera and drone.",
+        "meta": "Motorcycle road film, camera and drone.",
         "href": "https://www.youtube.com/watch?v=IxvAkzVlMh4",
     },
     {
@@ -420,7 +476,7 @@ WORK = [
     },
     {
         "slug": "agoda", "primary": "auto", "tags": ["auto"],
-        "title": "Agoda — Travel", "role": "Videographer", "client": "Agoda",
+        "title": "Agoda Travel", "role": "Videographer", "client": "Agoda",
         "year": "",
         "meta": "Travel reels shot on location.",
         "href": "https://www.instagram.com/reel/CkLtqonA7vq/",
@@ -429,42 +485,42 @@ WORK = [
     # ---- Food & Hospitality ----
     {
         "slug": "akina", "primary": "food", "tags": ["food"],
-        "title": "Akina — Bandra", "role": "Cinematography",
+        "title": "Akina, Bandra", "role": "Cinematography",
         "client": "Akina", "year": "",
-        "meta": "Social-first food content for the premium Japanese flagship.",
+        "meta": "Social food content for the Bandra flagship.",
         "href": "https://www.instagram.com/reel/Co7Y_pZoDUH/",
     },
     {
         "slug": "eu-food-show", "primary": "food", "tags": ["food"],
-        "title": "European Union — Food Show", "role": "Cinematography",
+        "title": "European Union Food Show", "role": "Cinematography",
         "client": "European Union", "year": "",
         "meta": "Food show and recipe films.",
         "href": "https://www.instagram.com/tv/CgJZqERq7by/",
     },
     {
         "slug": "faasos-pizza-wrap", "primary": "food", "tags": ["food"],
-        "title": "Faasos — Pizza Wrap Film", "role": "Production · Food Films",
+        "title": "Faasos Pizza Wrap", "role": "Production · Food Films",
         "client": "Rebel Foods", "year": "2025",
-        "meta": "New-product launch film for the QSR brand.",
+        "meta": "Product launch film for the QSR brand.",
         "href": "https://youtu.be/2bxD8jTEBqc", "feature": True,
     },
     {
         "slug": "faasos-wrap", "primary": "food", "tags": ["food"],
-        "title": "Faasos — Wrap Film", "role": "Production · Food Films",
+        "title": "Faasos Wrap Film", "role": "Production · Food Films",
         "client": "Rebel Foods", "year": "2025",
         "meta": "Signature-wrap product film.",
         "href": "https://youtu.be/n_mlI95xFyI",
     },
     {
         "slug": "faasos-curfew", "primary": "food", "tags": ["food"],
-        "title": "Faasos — Curfew Film", "role": "Production · Food Films",
+        "title": "Faasos Curfew Film", "role": "Production · Food Films",
         "client": "Rebel Foods", "year": "2025",
         "meta": "Campaign film for the QSR brand.",
         "href": "https://youtu.be/QLVCaKfDTV8",
     },
     {
         "slug": "faasos-table-tennis", "primary": "food", "tags": ["food"],
-        "title": "Faasos — Table Tennis Film", "role": "Production · Food Films",
+        "title": "Faasos Table Tennis Film", "role": "Production · Food Films",
         "client": "Rebel Foods", "year": "2025",
         "meta": "Concept campaign film for the QSR brand.",
         "href": "https://youtu.be/lJD21QcRXkU",
@@ -479,33 +535,18 @@ WORK = [
 
     # ---- Live & Sport ----
     {
-        "slug": "mumbai-indians", "primary": "live", "tags": ["live"],
-        "title": "Mumbai Indians — IPL",
-        "role": "Content Producer · Cinematographer",
-        "client": "Mumbai Indians", "year": "2023",
-        "meta": "Travelled with the team through the May 2023 season — "
-        "fast-turnaround social and campaign content.",
-    },
-    {
         "slug": "film-83", "primary": "live", "tags": ["live"],
-        "title": "83 — Film Marketing", "role": "Social Media Videographer",
+        "title": "83 Film Marketing", "role": "Social Media Videographer",
         "client": "Reliance Media · London", "year": "2019",
-        "meta": "Three-month campaign contract on the <i>83</i> release, on "
-        "location in London.",
+        "meta": "Three months in London on the <i>83</i> marketing campaign.",
         "href": "https://instagram.com/83thefilm",
     },
     {
         "slug": "redbull-bcone", "primary": "live", "tags": ["live"],
-        "title": "Red Bull — BC One", "role": "Cinematography",
+        "title": "Red Bull BC One", "role": "Cinematography",
         "client": "Red Bull", "year": "",
         "meta": "Event film for the global breaking championship.",
         "href": "https://youtu.be/uY2r-1VWwGk",
-    },
-    {
-        "slug": "football", "primary": "live", "tags": ["live"],
-        "title": "Football", "role": "Cinematography", "client": "FS Media Pro",
-        "year": "2025",
-        "meta": "On-ground sports film.",
     },
 ]
 
@@ -513,7 +554,7 @@ WORK = [
 
 TIMELINE = [
     {
-        "year": "2026 —",
+        "year": "2026",
         "title": "AI Director",
         "org": "T-Series",
         "body": "Contract, full-time. End-to-end AI-video production across "
@@ -524,8 +565,8 @@ TIMELINE = [
         "year": "2025 – 26",
         "title": "Founder / Director",
         "org": "FLOWV",
-        "body": "Independent creative studio — direction, cinematography, edit "
-        "and production. Rebel Foods culinary launches, Yamaha Music, NCPA SOI.",
+        "body": "Independent creative studio: direction, cinematography, edit "
+        "and production. Rebel Foods launches, Yamaha Music, NCPA SOI.",
         "now": False,
     },
     {
@@ -539,7 +580,7 @@ TIMELINE = [
         "year": "2018 – 23",
         "title": "Cinematographer & DOP",
         "org": "Independent",
-        "body": "100+ commissions — OTT, branded film, fashion, automotive, "
+        "body": "Over 100 commissions across OTT, branded film, fashion, automotive, "
         "travel, food and live. Netflix, Meta, Dell, Lakmé, Mahindra, Flipkart, "
         "Agoda and more.",
         "now": False,
@@ -548,7 +589,7 @@ TIMELINE = [
         "year": "2017 – 18",
         "title": "Content Manager",
         "org": "Only Much Louder (OML)",
-        "body": "Artist content and sponsor deals — Zakir Khan, Nishant Tanwar, "
+        "body": "Artist content and sponsor deals for Zakir Khan, Nishant Tanwar and "
         "Gaurav Kapoor.",
         "now": False,
     },
@@ -606,7 +647,7 @@ CLIENTS = [
     "T-Series", "Netflix", "Mumbai Indians", "Meta", "Dell", "Lakmé",
     "Mahindra", "Amazon miniTV", "Gillette", "Agoda", "Spotify", "Flipkart",
     "NCPA", "Rebel Foods", "Yamaha", "GoDaddy", "Volkswagen", "Citi", "Uber",
-    "MTV",
+    "MTV", "Prime Video", "Hotstar", "Colors TV", "Viu",
 ]
 
 # --- Contact socials ------------------------------------------------------
@@ -623,8 +664,8 @@ SOCIALS = [
 
 CONTACT = {
     "cue": "End Card · Let’s Make Something",
-    "big": "Available to lead AI direction, creative direction, and content "
-    "built at scale.",
+    "big": "Available to lead AI direction, creative direction, and "
+    "production.",
 }
 
 
@@ -723,7 +764,7 @@ def group_for(slug):
 
 def montage_frames(decorated):
     """De-duplicated still URLs for the hero montage (only items that resolve
-    to a real image — YouTube auto-thumbs or uploaded stills)."""
+    to a real image - YouTube auto-thumbs or uploaded stills)."""
     seen, frames = set(), []
     for w in decorated:
         src = w["thumb_src"]
